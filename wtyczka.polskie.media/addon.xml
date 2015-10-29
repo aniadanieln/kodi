@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 
 <addon id="wtyczka.polskie.media"
-       name="[B][COLOR=gold]POLSKIE MEDIA[/COLOR][/B]"
-       version="1.0.2"
+       name="[COLOR=gold][B]POLSKIE MEDIA[/B][/COLOR]"
+       version="1.1.0"
        provider-name="..::noVak::..™">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>

@@ -4,12 +4,12 @@
 
 <addon 	id="repository.neopack1" 
 		name="[B][COLOR=aqua]ALTERNATYWNE[/COLOR] [COLOR=red]POLSKIE[/COLOR] [COLOR=lime]WTYCZKI[/COLOR][/B]"  
-		version="1.0.1" 
+		version="1.1.0" 
 		provider-name="..::noVak::..™">
 	<extension point="xbmc.addon.repository" name="Alternatywne Polskie Wtyczki">
-		<info compressed="true">https://raw.githubusercontent.com/neopack1/neopack1/master/wtyczki/addons.xml</info>
-		<checksum>https://raw.githubusercontent.com/neopack1/neopack1/master/wtyczki/addons.xml.md5</checksum>
-		<datadir zip="true">https://raw.githubusercontent.com/neopack1/neopack1/master/wtyczki</datadir>
+		<info compressed="true">https://raw.githubusercontent.com/neopack1/kodi/master/addons.xml</info>
+		<checksum>https://raw.githubusercontent.com/neopack1/kodi/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://raw.githubusercontent.com/neopack1/kodi/master</datadir>
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary>- Only For Polish Users -</summary>
@@ -44,9 +44,9 @@
 </addon>
 
 <addon id="script.polskie.media"
-       name="Dodatki dla [I]Polskie Media[/I]"
+       name="[COLOR=pink]Rozszerzenie dla [I]Polskie Media[/I][/COLOR]"
        provider-name="..::noVak::..™"
-	   version="1.0.2">
+	   version="1.1.0">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0"/>
 		<import addon="script.module.simplejson" version="2.0.10"/>
@@ -62,8 +62,8 @@
 </addon>
 
 <addon id="wtyczka.polskie.media"
-       name="[B][COLOR orange]POLSKIE MEDIA[/COLOR][/B]"
-       version="1.0.2"
+       name="[COLOR=gold][B]POLSKIE MEDIA[/B][/COLOR]"
+       version="1.1.0"
        provider-name="..::noVak::..™">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -78,13 +78,12 @@
 	<platform>all</platform>
     <summary>Telewizja, Sport, Filmy, VOD</summary>
     <description>[COLOR=red]UWAGA: Wtyczka instaluje się bardzo długo![/COLOR] [CR]Plugin pozwala nam ogladac filmy, telewizję i wydarzenia sportowe na żywo. [CR]Dodatkowo wtyczka zapewnia dostęp do bibliotek VOD, radia internetowego i innego rodzaju serwisów multimedialnych... a wszystko to (a przynajmniej większość) dostępna jest za darmo i w [COLOR red]języku polskim[/COLOR].</description>
-	<platform>all</platform>
   </extension>
 </addon>
 
 <addon  id="wtyczka.porndevil" 
-		version="1.0.0"
-		name="[B](18+)[/B] [COLOR white]Porn[/COLOR][COLOR yellow]Devil[/COLOR]"
+		version="1.1.0"
+		name="[COLOR white][B]Porn[/B][/COLOR][COLOR yellow][B]Devil[/B][/COLOR]"
 		provider-name="..::noVak::..™">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0"/>
@@ -100,8 +99,8 @@
 </addon>
 
 <addon id="wtyczka.youjizz"
-       name="[B](18+)[/B] [COLOR red]You[/COLOR][COLOR=white]Jizz[/COLOR]"
-       version="1.0.0"
+       name="[COLOR white][B]You[/B][/COLOR][COLOR red][B]Jizz[/B][/COLOR]"
+       version="1.1.0"
        provider-name="..::noVak::..™">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
@@ -115,10 +114,12 @@
         <summary>(18+) YouJizz Porno Serwis</summary>
 		<summary lang="pl">YouJizz Porno Serwis</summary>
         <description>[COLOR red]ADULT CONTENT (18+)[/COLOR] [/I]from JouJizz.com[/I]</description>
-		<description lang="pl">[COLOR red]!!! UWAGA !!![/COLOR] [CR]Wtyczka zawiera materiały o charakterze erotycznym! [CR][CR]Zawartość dostarczana ze strony [I]www.YouJizz.com[/I]</description>
-		<platform>all</platform>
+		<description lang="pl">[COLOR red]!!! UWAGA !!![/COLOR] [CR] Wtyczka zawiera materiały o
+		charakterze erotycznym! [CR][CR]Zawartość dostarczana ze strony [I]www.YouJizz.com[/I]</description>
     </extension>
 </addon>
+
+
 
 <!--—————————————————————————————————— KONIEC LISTY ————————————————————————————————————-->
 </addons><!--###########################################################################-->

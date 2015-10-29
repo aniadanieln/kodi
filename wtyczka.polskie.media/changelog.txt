@@ -7,9 +7,10 @@
 ###########################
 
 —————————————————————————————————————————————
-Wersja                                  1.0.2
+Wersja                                  1.1.0
  - dodane serwisy zagraniczne - testowo
-
+ - zmiana serwerów wtyczki
+ 
 —————————————————————————————————————————————
 Wersja                                  1.0.1
  - naprawiono błędy instalacji

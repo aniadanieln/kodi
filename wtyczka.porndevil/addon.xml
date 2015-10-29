@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 
 <addon  id="wtyczka.porndevil" 
-		version="1.0.0"
-		name="[B][COLOR white]Porn[/COLOR][COLOR yellow]Devil[/COLOR][/B]"
+		version="1.1.0"
+		name="[COLOR white][B]Porn[/B][/COLOR][COLOR yellow][B]Devil[/B][/COLOR]"
 		provider-name="..::noVak::..™">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0"/>
