@@ -2,7 +2,7 @@
 
 <addon  id="wtyczka.porndevil" 
 		version="1.1.0"
-		name="[COLOR white][B]Porn[/B][/COLOR][COLOR yellow][B]Devil[/B][/COLOR]"
+		name="[COLOR white][B]Porn[/B][/COLOR][COLOR yellow][B]Devil[/COLOR]"
 		provider-name="..::noVak::..™">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0"/>
