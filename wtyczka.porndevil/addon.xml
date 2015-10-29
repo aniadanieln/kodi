@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<addon  id="wtyczka.porndevil" 
+		version="1.0.0"
+		name="[B][COLOR white]Porn[/COLOR][COLOR yellow]Devil[/COLOR][/B]"
+		provider-name="..::noVak::..™">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0"/>
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="default.py">
+		<provides>video</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>KOLEKCJA SERWISÓW [COLOR red]XXX[/COLOR]</summary>
+		<description>Zbiór kilkunastu serwisów udostępniających materniały o charakterze erotycznym z codzienną aktualizacją zawartości. [CR][CR][COLOR blue][I][B]   - XXX - PORNO - SEX - [/B][/I][/COLOR]</description>
+    <platform>all</platform>
+  </extension>
+</addon>

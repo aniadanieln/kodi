@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<addon id="wtyczka.youjizz"
+       name="-=[COLOR red]YouJizz[/COLOR]=-"
+       version="1.0.0"
+       provider-name="..::noVak::..™">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource"
+               library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary>(18+) YouJizz Porno Serwis</summary>
+		<summary lang="pl">YouJizz Porno Serwis</summary>
+        <description>[COLOR red]ADULT CONTENT (18+)[/COLOR] [/I]from JouJizz.com[/I]</description>
+		<description lang="pl">[COLOR red]!!! UWAGA !!![/COLOR] [CR] Wtyczka zawiera materiały o
+		charakterze erotycznym! [CR][CR]Zawartość dostarczana ze strony [I]www.YouJizz.com[/I]</description>
+    </extension>
+</addon>

@@ -1,0 +1,8 @@
+##############################
+## Moje ignorowane pliki
+##############################
+
+*.bak
+thumbs.db
+desktop.ini
+*.pyo

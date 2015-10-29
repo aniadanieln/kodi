@@ -1,0 +1,7 @@
+# Netscape HTTP Cookie File
+# http://curl.haxx.se/rfc/cookie_spec.html
+# This is a generated file!  Do not edit.
+
+www.mmtv.pl	FALSE	/	FALSE		TS01ffc9cd	016f6b2ea2be006a005d7207fb91f6b012ba44275c2ad5cf3ca4672a31d0c3b88f5fe31e64
+www.mmtv.pl	FALSE	/FrontOffice	TRUE		JSESSIONID	7C16D71DDBEFC2EFCBD407EBDAE376B4.node1
+www.mmtv.pl	FALSE	/FrontOffice	FALSE		TS01dfc9da	016f6b2ea25ecc3d1ed9131db4902b9564461ed539137756ecaa6d33b05be34ec3b6736a67e8ef1e99e2a889415ae801f76f57583d

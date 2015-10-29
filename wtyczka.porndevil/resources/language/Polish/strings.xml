@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+    <string id="30000">PORNO Hub</string>
+    <string id="30001">KODI Media Center</string>
+
+    <string id="20191">Włącz LOG Debugera</string>
+    <string id="30002">Pomiń ostrzeżenie na starcie</string>
+    <string id="30003">Rodzaj odtwarzacza</string>
+    <string id="30004">Auto</string>
+    <string id="30005">MPlayer</string>
+    <string id="30006">DVDPlayer</string>
+    <string id="30007">Zapisz wideo</string>
+    <string id="30008">Folder pobierania</string>
+    <string id="30009">Zapytaj czy pobrać przed otworzeniem</string>
+    <string id="30010">Dodaj skrót</string>
+    <string id="30011">Usuń skrót</string>
+    <string id="30012">Jakość wideo (jeżeli jest wiele)</string>
+    <string id="30013">Zapytaj mnie</string>
+    <string id="30014">Niska</string>
+    <string id="30015">Zwykła</string>
+    <string id="30016">Wysoka</string>
+    <string id="30017">Wybierz ścieżkę pobierania:</string>
+
+    <string id="30050">Pobieranie wideo...</string>
+    <string id="30051">Czekaj.</string>
+    <string id="30052">Czy chcesz pobrać wideo?</string>
+    <string id="30053">Pobieranie nieudane. Prubuję odtworzyć...</string>
+    <string id="30054">Naprawdę chcesz usunąć skrót?</string>
+    <string id="30055">Wybierz jakość wideo: </string>
+    <string id="30056">Niska jakość</string>
+    <string id="30057">Zwykła jakość</string>
+    <string id="30058">Wysoka jakość</string>
+    <string id="30059">Aktualizacja</string>
+    <string id="30060">Wtyczka zaktualizowana pomyślnie</string>
+    <string id="30061">!!!!!   UWAGA   !!!!!</string>
+    <string id="30062">[I]Wtyczka zawiera materiały o charakterze erotycznym,[/I]</string>
+    <string id="30063">[I]możesz wejść jeżelijesteś osobą pełnoletnią.[/I]</string>
+    <string id="30064">[COLOR yellow][B]Czy chcesz przejść dalej?[/B][/COLOR]</string>
+    <string id="30065">[COLOR red] Nie [/COLOR]</string>
+    <string id="30066">[COLOR lime][B]   WCHODZĘ   [/B][/COLOR]</string>
+
+    <string id="30100">Kategorie</string>
+    <string id="30101">Podkategorie</string>
+    <string id="30102">Szukaj</string>
+    <string id="30103">DALEJ >></string>
+    <string id="30104">Więcej</string>
+    <string id="30105">Gatunek</string>
+    <string id="30106">Aktualne</string>
+    <string id="30107">Artysta</string>
+    <string id="30108">Filmy</string>
+    <string id="30109">Sortowanie</string>
+    <string id="30110">Sugestie</string>
+    <string id="30111">Refine</string>
+    <string id="30112">Region</string>
+    <string id="30113">Time span</string>
+    <string id="30114">Sport</string>
+    <string id="30115">Dla dzieci</string>
+    <string id="30116">Muzyka</string>
+    <string id="30117">Powiązane wido</string>
+    <string id="30118">Gwiazdy</string>
+</strings>
