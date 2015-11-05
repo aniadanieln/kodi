@@ -2,7 +2,7 @@
 
 <addon 	id="repository.neopack1" 
 		name="[COLOR=aqua]ALTERNATYWNE[/COLOR] [COLOR=red]POLSKIE[/COLOR] [COLOR=lime]WTYCZKI[/COLOR]"  
-		version="1.1.0" 
+		version="1.1.1" 
 		provider-name="..::noVak::..™">
 	<extension point="xbmc.addon.repository" name="Alternatywne Polskie Wtyczki">
 		<info compressed="true">https://raw.githubusercontent.com/neopack1/kodi/master/addons.xml</info>
