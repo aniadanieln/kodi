@@ -5,9 +5,9 @@
        provider-name="..::noVak::..™"
 	   version="1.1.1">
 	<requires>
-		<import addon="xbmc.python" version="2.1.0"/>
-		<import addon="script.module.simplejson" version="2.0.10"/>
-		<import addon="script.module.beautifulsoup" version="3.2.1"/>
+		<import addon="xbmc.python" version="1.0.0"/>
+		<import addon="script.module.simplejson" version="1.0.0"/>
+		<import addon="script.module.beautifulsoup" version="1.0.0"/>
 	</requires>
 	<extension library="lib" point="xbmc.python.module"/>
 	<extension point="xbmc.addon.metadata">

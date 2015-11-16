@@ -26,7 +26,7 @@
        version="2.8.1"
        provider-name="kennethreitz, beenje">
   <requires>
-    <import addon="xbmc.python" version="2.14.0"/>
+    <import addon="xbmc.python" version="1.0.0"/>
   </requires>
   <extension point="xbmc.python.module"
              library="lib" />
@@ -48,9 +48,9 @@
        provider-name="..::noVak::..™"
 	   version="1.1.1">
 	<requires>
-		<import addon="xbmc.python" version="2.1.0"/>
-		<import addon="script.module.simplejson" version="2.0.10"/>
-		<import addon="script.module.beautifulsoup" version="3.2.1"/>
+		<import addon="xbmc.python" version="1.0.0"/>
+		<import addon="script.module.simplejson" version="1.0.0"/>
+		<import addon="script.module.beautifulsoup" version="1.0.0"/>
 	</requires>
 	<extension library="lib" point="xbmc.python.module"/>
 	<extension point="xbmc.addon.metadata">
@@ -66,10 +66,10 @@
        version="1.1.1"
        provider-name="..::noVak::..™">
   <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="xbmc.python" version="1.0.0"/>
     <import addon="script.polskie.media" version="1.0.0"/>
-    <import addon="script.module.simplejson" version="2.0.10"/>
-    <import addon="script.module.requests" version="2.7.0"/>
+    <import addon="script.module.simplejson" version="1.0.0"/>
+    <import addon="script.module.requests" version="1.0.0"/>
   </requires>
   <extension point="xbmc.python.pluginsource" library="default.py">
         <provides>video</provides>
@@ -86,7 +86,7 @@
 		name="[COLOR white][B]Porn[/B][/COLOR][COLOR yellow][B]Devil[/B][/COLOR]"
 		provider-name="..::noVak::..™">
 	<requires>
-		<import addon="xbmc.python" version="2.1.0"/>
+		<import addon="xbmc.python" version="1.0.0"/>
 	</requires>
 	<extension point="xbmc.python.pluginsource" library="default.py">
 		<provides>video</provides>
@@ -103,7 +103,7 @@
        version="1.1.0"
        provider-name="..::noVak::..™">
     <requires>
-        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="xbmc.python" version="1.0.0"/>
     </requires>
     <extension point="xbmc.python.pluginsource"
                library="default.py">
@@ -122,7 +122,7 @@
 
 <addon id="plugin.video.iptvxtra-polen" name="[COLOR=aqua]IPTVxtra (PL)[/COLOR]" version="1.0.0" provider-name="..::noVak::..™">
   <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="xbmc.python" version="1.0.0"/>
   </requires>
   <extension point="xbmc.python.pluginsource" library="default.py">
         <provides>video</provides>
