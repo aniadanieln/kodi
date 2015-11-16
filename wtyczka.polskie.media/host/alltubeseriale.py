@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 import urllib, urllib2, re, os, sys, math
 import xbmcgui, xbmc, xbmcaddon, xbmcplugin
 from urlparse import urlparse, parse_qs
@@ -6,7 +6,7 @@ import mrknow_urlparser,json
 
 
 scriptID = 'wtyczka.polskie.media'
-scriptname = "Alltube seriale"
+scriptname = "Filmy online www.mrknow.pl - http://zobaczto.tv/ seriale"
 ptv = xbmcaddon.Addon(scriptID)
 _thisPlugin = int(sys.argv[1])
 
@@ -22,7 +22,8 @@ log = mrknow_pLog.pLog()
 mainUrl = 'http://alltube.tv/'
 catUrl = 'http://alltube.tv/seriale-online/'
 
-HOST = 'Mozilla/5.0 (Windows NT 6.1; rv:17.0) Gecko/20100101 Firefox/30.0'
+
+HOST = 'Mozilla/5.0 (Windows NT 6.1; rv:17.0) Gecko/20100101 Firefox/41.0'
 
 MENU_TAB = {0: "Alfabetycznie",
 #            1: "Top dzisiaj",
@@ -128,12 +129,12 @@ class alltubeseriale:
         link = self.cm.getURLRequestData(query_data)
         match = re.compile('<div class="col-xs-12 col-sm-9">(.*?)<h3>(.*?)</h3>', re.DOTALL).findall(link)
         match1 = re.compile('<li class="episode"><a href="(.*?)">(.*?)</a></li>', re.DOTALL).findall(link)
-        match2 = re.compile('<p><img src="(.*?)" alt="">(.*?)</p>(.*?)<center><div class="fb-share-button" data-href="(.*?)" data-layout="button_count"></div></center> <br>', re.DOTALL).findall(link)
+        match2 = re.compile('<div class="row" style="margin-bottom: 15px">\n      <div class="col-sm-3">\n        <img src="(.*?)" alt="(.*?)" class="img-responsive">', re.DOTALL).findall(link)
         print(match,match1, match2)
-        if len(match1) > 0 and len(match) > 0:
+        if len(match1) > 0:
             for i in range(len(match1)):
                     #add(self, service, name,               category, title,     iconimage, url, desc, rating, folder = True, isPlayable = True):
-                    self.add('alltubeseriale', 'playSelectedMovie', 'None', match[0][1] + ' - ' + match1[i][1], match2[0][0], match1[i][0], 'aaaa', 'None', False, True)
+                    self.add('alltubeseriale', 'playSelectedMovie', 'None', match1[i][1], match2[0][0], match1[i][0], 'aaaa', 'None', False, True)
         xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
     def listsItemsA(self, url):
@@ -162,19 +163,24 @@ class alltubeseriale:
 
 
     def listsItemsOst(self, url):
-        query_data = { 'url': url, 'use_host': False, 'use_cookie': False, 'use_post': True, 'return_data': True }        
+        HEADER = {'Accept-Language': 'pl,en-US;q=0.7,en;q=0.3', 'Referer': mainUrl, 'User-Agent': HOST}
+        query_data = { 'url': url, 'use_host': False, 'use_host': False, 'use_header': True, 'header': HEADER, 'use_cookie': False, 'use_post': False, 'return_data': True }
         link = self.cm.getURLRequestData(query_data)
         soup = BeautifulSoup(link)
-        linki_ost = soup.find('div', {"id": "series-list-custome"})
+        linki_ost = soup.find('div', {"class": "col-sm-9"})
+        #print("link",link)
         if linki_ost:
-            linki_all = soup.findAll('div', {"class": "item"})
+            linki_all = soup.findAll('div', {"class": "series"})
             for mylink in linki_all:
+                print("m",mylink)
+                print("M2",mylink.a['href'])
+
                 myimage = mylink.img['src']
-                mytitle = mylink.contents[3].text
-                myhref = mylink.contents[3].a['href']
-                myseries = mylink.contents[5].findAll('li')
-                for myitem in myseries:
-                    self.add('alltubeseriale', 'playSelectedMovie', 'None', mytitle + ' - ' + myitem.text,  myimage, myitem.a['href'], 'aaaa', 'None', False, True,'')
+                mytitle = mylink.contents[1].text
+                myhref = mylink.a['href']
+                #myseries = mylink.contents[2].findAll('li')
+                #for myitem in myseries:
+                self.add('alltubeseriale', 'playSelectedMovie', 'None', mytitle ,  myimage, myhref, 'aaaa', 'None', False, True,'')
         xbmcplugin.endOfDirectory(int(sys.argv[1]))
     def listsItemsTop(self, url):
         query_data = { 'url': url, 'use_host': False, 'use_cookie': False, 'use_post': True, 'return_data': True }        

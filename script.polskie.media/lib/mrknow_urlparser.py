@@ -261,12 +261,22 @@ class mrknow_urlparser:
         HEADER = {'Referer': referer,'User-Agent': HOST}
         query_data = { 'url': url, 'use_host': False, 'use_header': True, 'header': HEADER, 'use_cookie': False, 'use_post': False, 'return_data': True }
         link = self.cm.getURLRequestData(query_data)
+        #print("Link",link)
         linkvideo = ''
-        match = re.compile("url: '(.*?)',").findall(link)
-        if len(match)>0:
-            return match[0]
-        else:
-            return ''
+        match1 = re.compile("url: '(.*?)',").findall(link)
+        match2 = re.compile('<iframe src="(.*?)" (.*?)></iframe>').findall(link)
+        if len(match1)>0:
+            linkvideo = match1[0]
+        if len(match2)>0:
+            print("Mamy",match2[0])
+            query_data = { 'url': 'http:'+match2[0][0], 'use_host': False, 'use_header': True, 'header': HEADER, 'use_cookie': False, 'use_post': False, 'return_data': True }
+            link = self.cm.getURLRequestData(query_data)
+            #print("Link",link)
+            match3 = re.compile("url: '(.*?)',").findall(link)
+            if len(match3)>0:
+                linkvideo = match3[0]
+
+        return linkvideo
 
     def parservideowood(self,url, referer, options):
         HEADER = {'Referer': referer,'User-Agent': HOST}

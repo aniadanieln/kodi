@@ -40,6 +40,7 @@ def log(msg, level=xbmc.LOGINFO):
     plugin = "Mrknow"
     msg = msg.encode('utf-8')
     xbmc.log("[%s] %s" % (plugin, msg.__str__()), level)
+    print("[%s] %s" % (plugin, msg.__str__()))
 
 def getSetting(name):
     return __settings__.getSetting(name)

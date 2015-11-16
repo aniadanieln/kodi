@@ -4,7 +4,7 @@ import urllib, urllib2
 import xbmcgui,xbmc
 
 scriptID = sys.modules[ "__main__" ].scriptID
-scriptname = "Polskie Media"
+scriptname = "mrknow Polish films online"
 
 class Player:
     def __init__(self):

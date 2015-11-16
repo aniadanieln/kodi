@@ -15,8 +15,8 @@ import mrknow_pLog, mrknow_pCommon, mrknow_Parser, mrknow_urlparser, mrknow_Page
 
 log = mrknow_pLog.pLog()
 
-mainUrl = 'http://screen-tv.pl'
-imgUrl = 'http://screen-tv.pl/'
+mainUrl = 'http://screen-tv.eu'
+imgUrl = 'http://screen-tv.eu/'
 
 
 class screentv:

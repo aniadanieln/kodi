@@ -114,16 +114,17 @@ class mrknow_Pageparser:
   def alltubetv(self, url, referer):
     query_data = { 'url': url, 'use_host': False, 'use_cookie': False, 'use_post': False, 'return_data': True }
     link = self.cm.getURLRequestData(query_data)
-    #print("Link",link)
-    match1=re.compile('<td><img src="(.*?)" alt="(.*?)">(.*?)</td>\n      <td><img src="(.*?)">(.*?)</td>\n      <td class="text-center"><a class="watch-link" data-urlhost="(.*?)" data-iframe="(.*?)" data-size="(.*?)" href="(.*?)"><img src="(.*?)" alt="(.*?)"></a></td>').findall(link)
+    print("Link",link)
+    #match1=re.compile('<td class="text-center"><a class="watch-link" data-urlhost="(.*?)" data-iframe="(.*?)" data-version="(.*?)"(.*?)>').findall(link)
+    match1=re.compile('<td><img src="(.*?)" alt="(.*?)"> (.*?)</td>\n              <td class="text-center">(.*?)</td>\n              <td class="text-center"><a class="watch" data-urlhost="(.*?)" data-iframe="(.*?)" data-version="(.*?)" data-short="(.*?)" data-size="(.*?)" (.*?)>(.*?)</a>\n                            </td>').findall(link)
     print("Match1",match1)
     tab = []
     tab2 = []
     if match1:
         for i in range(len(match1)):
             print("Link", match1[i])
-            tab.append(match1[i][4] + ' - ' + match1[i][2] )
-            tab2.append(match1[i][5])
+            tab.append(match1[i][6] +' - ' + self.getHostName(match1[i][4]) )
+            tab2.append(match1[i][4])
         d = xbmcgui.Dialog()
         video_menu = d.select("Wybór strony video", tab)
         if video_menu != "":

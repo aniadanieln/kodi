@@ -12,7 +12,7 @@ except ImportError:
     import json
 
 scriptID = 'wtyczka.polskie.media'
-scriptname = "Molskie Media"
+scriptname = "Polskie Media"
 ptv = xbmcaddon.Addon(scriptID)
 
 import z_pLog, parser, settings, libCommon,xppod

@@ -56,7 +56,7 @@ import z_pLog
 log = z_pLog.pLog()
 
 scriptID = sys.modules[ "__main__" ].scriptID
-scriptname = "Polskie Media TV"
+scriptname = "Polish Live TV"
 ptv = xbmcaddon.Addon(scriptID)
 
 dbg = ptv.getSetting('default_debug')
@@ -225,7 +225,7 @@ class common:
     def LOAD_AND_PLAY_VIDEO(self, url, title, player = True):
         if url == '':
             d = xbmcgui.Dialog()
-            d.ok('Nie znaleziono streamingu', 'Może to chwilowa awaria.', 'Spróbuj ponownie za jakiś czas')
+            d.ok('Nie znaleziono streamingu', 'Moşe to chwilowa awaria.', 'Spróbuj ponownie za jaki�? czas')
             return False
         thumbnail = xbmc.getInfoImage("ListItem.Thumb")
         liz=xbmcgui.ListItem(title, iconImage="DefaultVideo.png", thumbnailImage=thumbnail)
@@ -240,7 +240,7 @@ class common:
             xbmcPlayer.play(url, liz)
         except:
             d = xbmcgui.Dialog()
-	    d.ok('Błąd przy przetwarzaniu, lub wyczerpany limit czasowy ogl�ą?dania.', 'Zarejestruj się? i opłać? abonament.', 'Aby oglądać za darmo spróbuj ponownie za jakiś czas')        
+	    d.ok('B�?�?d przy przetwarzaniu, lub wyczerpany limit czasowy ogl�?dania.', 'Zarejestruj si�? i op�?a�? abonament.', 'Aby ogl�?da�? za darmo spróbuj ponownie za jaki�? czas')        
 	    return False
 	return True
 	    

@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 import urllib, urllib2, re, sys, xbmcplugin, xbmcgui
 import cookielib, os, string, cookielib, StringIO
 import os, time, base64, logging, calendar
@@ -58,61 +58,72 @@ MENU_TABLE = { #1000: "www.mrknow.pl [filmy online]",
                9000: "noobroom.com"
 }
 TV_ONLINE_TABLE = {
-		#     2100 : ["Film Box", 'filmbox'],
-        #     2200 : ["Zobacz JCOM", 'zobaczjcompl'],
+		      2100 : ["FilmBox", 'filmbox'],
+         #    2200 : ["Zobacz.jcom.pl", 'zobaczjcompl'],
          #    2300 : ["Team-cast.pl [dziala jak weeb.tv ale za darmo]", 'teamcastpl'],
               2350 : ["Looknij TV", 'looknijtv'],
          #    2400 : ["TVP Stream", 'tvpstream'],
-             2500 : ["Screen TV", 'screentv'],
+         #     2500 : ["Screen-tv (EU)", 'screentv'],
          #    2600 : ["Telewizjoner.pl  [test 10% dziala, w tym hbo]", 'nettv'],
-             2700 : ["Typer TV", 'typertv'],
+              2700 : ["Typer TV", 'typertv'],
          #    2800 : ["MmTV.pl","mmtv"]
 }
 FUN_ONLINE_TABLE = {
-               3000: ["Wykop","wykop"],
+               3000: ["Wykop.pl","wykop"],
                #6000: ["Milanos.pl","milanos"],
-               #4500: ["ToSieWytnie","tosiewytnie"],
-               #5000: ["JoeMonster","joemonster"],
-               5100: ["Wrzuta","wrzuta"],
+               #4500: ["Tosiewytnie.pl","tosiewytnie"],
+               #5000: ["Joemonster.org","joemonster"],
+               5100: ["Wrzuta.pl","wrzuta"],
                #5200: ["interia.tv [testy]","interia"]
                
                
 }
 SPORT_ONLINE_TABLE = {
-               4000: ["Meczyki.pl","meczyki"],
-               4100: ["DrHTV","drhtvcompl"],
+               4000: ["Meczyki.pl [dziala ok 40%]","meczyki"],
+               #4100: ["Drhtv.com.pl","drhtvcompl"],
                #2600 : ["Goodcast.tv", 'goodcast'],
 
 }
 
 SERIALE_ONLINE_TABLE = {
-               8000: ["AleKino","kinoliveseriale"],
-               8100: ["Zobacz To","zobacztoseriale"],
-               8200: ["TvSeriesOnline", "tvseriesonlinepl"],
-               8300: ["Alltube","alltubeseriale"],
+               #8000: ["Alekino.tv","kinoliveseriale"],
+               8100: ["Zobaczto.tv Seriale","zobacztoseriale"],
+               8200: ["Tvseriesonline.pl    [dziala 70% stron z linkami]", "tvseriesonlinepl"],
+               8300: ["Alltube.tv Seriale","alltubeseriale"],
 }
 
 FILM_ONLINE_TABLE = {
-		     7400 : ["CDA", 'cdapl'],
-             7300: ["PolVOD","polvod"],
+		     7400 : ["Cda.pl", 'cdapl'],
+             7300: ["Polvod.pl","polvod"],
              #7300: ["Noobroom.com","noobroom"],
            #  7000: ["Vod Onet PL","vodpl"],
-             7100: ["FilmBox","filmboxmoovie"],
+             7100: ["Filmbox Movie","filmboxmoovie"],
             # 7200: ["Seansik.tv","seansiktv"],
-             7500: ["AleKino","kinolive"],
+           #  7500: ["Alekino.tv","kinolive"],
+            7200: ["Alltube.tv Filmy ","alltubefilmy"],
              7600: ["Iptak","iptak"],
              #7700: ["Films-online.pl","filmsonline"],
-          #   7800: ["StrefaVod.pl","strefavod"],
-             5100: ["Wrzuta [testy]","wrzuta"],
-             7900: ["VOD Tvp [testy]","tvppl"],
+             7800: ["StrefaVod.pl","strefavod"],
+             5100: ["Wrzuta.pl [testy]","wrzuta"],
+             7900: ["Vod.tvpl.pl [testy]","tvppl"],
              
 
 }
 
+def mydump(obj):
+  '''return a printable representation of an object for debugging'''
+  newobj=obj
+  if '__dict__' in dir(obj):
+    newobj=obj.__dict__
+    if ' object at ' in str(obj) and not newobj.has_key('__type__'):
+      newobj['__type__']=str(obj)
+    for attr in newobj:
+      newobj[attr]=mydump(newobj[attr])
+  return newobj
 
 import wykop, joemonster, milanos,filmbox,vodpl
 import kinolive,tvpstream,kinoliveseriale,zobacztoseriale,filmsonline,mmtv, polvod, looknijtv
-import iptak,nettv,strefavod,wrzuta,tvppl, interia
+import iptak,nettv,strefavod,wrzuta,tvppl, interia, alltubefilmy
 import filmboxmoovie, cdapl, seansiktv, screentv, typertv, zobaczjcompl, tvseriesonlinepl, alltubeseriale
 
 class StopDownloading(Exception):
@@ -124,6 +135,7 @@ class StopDownloading(Exception):
 class MrknowFilms:
 
     MAIN_MENU_FILE = 'mainMenu.cfg'
+
 
     def __init__(self):
         #BASE_RESOURCE_PATH = os.path.join( os.getcwd(), "resources" )
@@ -156,7 +168,7 @@ class MrknowFilms:
         self.currentlist = None
 
         self.addon = None
-        self.log.info('POLSKIE MEDIA - noVak')
+        self.log.info('Filmy online www.mrknow.pl')
         common.clearCache()
 
 
@@ -241,6 +253,7 @@ class MrknowFilms:
                     # switch(mode)
                     if mode == common.Mode2.VIEW:
                         tmpList = self.parseView(item)
+                        print("MMMMMMMM",item,vars(item))
                         if tmpList:
                             self.currentlist = tmpList
                             count = len(self.currentlist.items)
@@ -277,8 +290,8 @@ class MrknowFilms:
                         self.playVideo(item)
 
             except Exception, e:
-                common.showError('BŁĄD URUCHAMIANIA WTYCZKI')
-                self.log.info('BŁĄD URUCHAMIANIA Z POWODU: ' + str(e))
+                common.showError('Error running Mrknow')
+                self.log.info('Error running Mrknow. Reason:' + str(e))
 
 
         elif mode == 8000 or service == 'kinoliveseriale':
@@ -303,8 +316,8 @@ class MrknowFilms:
         elif mode == 7100 or service == 'filmboxmoovie':
             tv = filmboxmoovie.filmboxmoovie()
             tv.handleService()
-        elif mode == 7200 or service == 'seansiktv':
-            tv = seansiktv.seansiktv()
+        elif mode == 7200 or service == 'alltubefilmy':
+            tv = alltubefilmy.alltubefilmy()
             tv.handleService()
         elif mode == 7300 or service == 'polvod':
             tv = polvod.polvod()
@@ -377,12 +390,12 @@ class MrknowFilms:
 
     def CATEGORIES(self):
         self.addDir("Telewizja", 1, False, 'Telewizja', False)
-        self.addDir('[COLOR grey]Serwisy Testowe[/COLOR]', common.Mode2.VIEW, False, 'Testy', False)
+        self.addDir('Telewizja, wymaga nowego librtmp', common.Mode2.VIEW, False, 'Testy', False)
         self.addDir("Filmy", 2, False, 'Filmy', False)
         self.addDir("Seriale", 3, False, 'Seriale', False)
         self.addDir("Rozrywka", 4, False, 'Rozrywka', False)
         self.addDir('Ustawienia', 20, True, 'Ustawienia', False)
-        self.addDir('[COLOR blue]Aktualizuj LIBRTMP[/COLOR]',30, False, 'Ustawienia', False)
+        self.addDir('[COLOR yellow]Aktualizuj LIBRTMP - aby dzialy kanaly TV - Patche KSV[/COLOR]',30, False, 'Ustawienia', False)
         xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
     def listsTable(self, table):
@@ -499,7 +512,7 @@ class MrknowFilms:
         # if it's the main menu, add folder 'Favourites' and 'Custom Modules
         if url == self.MAIN_MENU_FILE:
             tmp = ListItem.create()
-            tmp['title'] = 'Ulubione'
+            tmp['title'] = 'Favourites'
             tmp['type'] = 'rss'
             tmp['icon'] = os.path.join(common.Paths.imgDir, 'bookmark.png')
             tmp['url'] = str(common.Paths.favouritesFile)
@@ -518,7 +531,7 @@ class MrknowFilms:
                 url = os.path.normpath(os.path.join(common.Paths.favouritesFolder, url))
 
             tmp = ListItem.create()
-            tmp['title'] = 'Dodaj...'
+            tmp['title'] = 'Add item...'
             tmp['type'] = 'command'
             tmp['icon'] = os.path.join(common.Paths.imgDir, 'bookmark_add.png')
             action = 'RunPlugin(%s)' % (self.base + '?mode=' + str(common.Mode2.ADDITEM) + '&url=' + url)
@@ -528,7 +541,7 @@ class MrknowFilms:
         # if it's the custom modules  menu, add item 'more...'
         elif url == common.Paths.customModulesFile:
             tmp = ListItem.create()
-            tmp['title'] = 'Więcej...'
+            tmp['title'] = 'more...'
             tmp['type'] = 'command'
             #tmp['icon'] = os.path.join(common.Paths.imgDir, 'bookmark_add.png')
             action = 'RunPlugin(%s)' % (self.base + '?mode=' + str(common.Mode2.DOWNLOADCUSTOMMODULE) + '&url=')
@@ -544,7 +557,7 @@ class MrknowFilms:
             if url.startswith('favfolders'):
                 proceed = True
             else:
-                common.showInfo('Nie odnaleziono streamu')
+                common.showInfo('No stream available')
         elif count > 0 and not (ptv.getSetting('autoplay') == 'true' and count == 1 and len(tmpList.getVideos()) == 1):
             # sort methods
             sortKeys = tmpList.sort.split('|')
@@ -633,6 +646,8 @@ class MrknowFilms:
         xbmcplugin.addDirectoryItem(handle = self.handle, url = u, listitem = liz, isFolder = isFolder, totalItems = totalItems)
 
     def createXBMCListItem(self, item):
+        #print("MMMMMMMM",vars(item))
+
         title = item['title']
 
         m_type = item['type']
@@ -759,22 +774,22 @@ class MrknowFilms:
                 kbps_speed = kbps_speed / 1024
                 total = float(filesize) / (1024 * 1024)
                 mbs = '%.02f MB of %.02f MB' % (currently_downloaded, total)
-                e = 'Prędkość: %.02f Kb/s ' % kbps_speed
-                e += 'Przewidywany czas: %02d:%02d' % divmod(eta, 60)
+                e = 'Speed: %.02f Kb/s ' % kbps_speed
+                e += 'ETA: %02d:%02d' % divmod(eta, 60)
                 dp.update(percent, mbs, e)
             except:
                 percent = 100
                 dp.update(percent)
             if dp.iscanceled():
                 dp.close()
-                raise StopDownloading('Zatrzymane pobieranie')
+                raise StopDownloading('Stopped Downloading')
 
     def DLLIBRTMP(self,mname,url):
         dialog = xbmcgui.Dialog()
         if re.search('(?i)windows',mname):
                 path=xbmc.translatePath('special://xbmc/system/players/dvdplayer/')
         if re.search('(?i)ios',mname):
-            ret = dialog.select('[COLOR=FF67cc33][B]Wybierz sprzęt[/COLOR][/B]',['iDevice','ATV2'])
+            ret = dialog.select('[COLOR=FF67cc33][B]Select Device[/COLOR][/B]',['iDevice','ATV2'])
             if ret == -1:
                 return
             elif ret == 0:
@@ -789,7 +804,7 @@ class MrknowFilms:
             retex = 1
             if re.search('(?i)32bit',mname):
 
-                retex = dialog.select('[COLOR=FF67cc33][B]Wybierz platformę[/COLOR][/B]',['Linux Build','ATV1'])
+                retex = dialog.select('[COLOR=FF67cc33][B]Select Device[/COLOR][/B]',['Linux Build','ATV1'])
                 if retex == -1:
                     return
                 elif retex == 0:
@@ -810,7 +825,7 @@ class MrknowFilms:
         lib=os.path.join(path,name)
         self.downloadFileWithDialog(url,lib)
         if re.search('(?i)linux',mname):
-            keyb = xbmc.Keyboard('', 'Podaj hasło Roota')
+            keyb = xbmc.Keyboard('', 'Enter Root Password')
             keyb.doModal()
             if (keyb.isConfirmed()):
                 sudoPassword = keyb.getText()
@@ -823,20 +838,20 @@ class MrknowFilms:
                 #os.remove(lib)
 
         if re.search('APKINSTALLER',mname):
-            dialog.ok("..::noVak::..", "To by było na tyle", "[COLOR blue]Miejsce pobrania[/COLOR]",path)
+            dialog.ok("mrknow.pl", "Thats It All Done", "[COLOR blue]Download location[/COLOR]",path)
         else:
-            dialog.ok("..::noVak::..", "To by było na tyle", "[COLOR blue]Powinni działać prawidłowo[/COLOR]")
+            dialog.ok("mrknow.pl", "Thats It All Done", "[COLOR blue]Now should be Updated[/COLOR]")
 
 
     def downloadFileWithDialog(self,url,dest):
         try:
             dp = xbmcgui.DialogProgress()
-            dp.create("..::noVak::..","Pobieranie i kopiowanie plików",'')
+            dp.create("mrknow.pl","Downloading & Copying File",'')
             urllib.urlretrieve(url,dest,lambda nb, bs, fs, url=url: self._pbhook(nb,bs,fs,dp,time.time()))
         except Exception, e:
             dialog = xbmcgui.Dialog()
             #main.ErrorReport(e)
-            dialog.ok("..::noVak::..", "Pojawił się błąd typu: ", str(e), "Będę starał się poprawić usterkę...")
+            dialog.ok("Mash Up", "Report the error below at ", str(e), "We will try our best to help you")
 
 init = MrknowFilms()
 init.showListOptions(sys.argv)

@@ -6,7 +6,7 @@ import urlparser
 import json
 
 scriptID = 'wtyczka.polskie.media'
-scriptname = "Polskie Media - wykop.pl"
+scriptname = "Filmy online www.mrknow.pl - wykop"
 ptv = xbmcaddon.Addon(scriptID)
 
 BASE_RESOURCE_PATH = os.path.join( ptv.getAddonInfo('path'), "../resources" )

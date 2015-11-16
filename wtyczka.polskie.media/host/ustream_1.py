@@ -11,7 +11,7 @@ try:
 except:
     import simplejson as json
 
-addon = xbmcaddon.Addon('plugin.video.ustream')
+addon = xbmcaddon.Addon('wtyczka.polskie.media')
 
 BASE_RESOURCE_PATH = os.path.join( addon.getAddonInfo('path'), "../script.common.plugin.cache/" )
 sys.path.append( os.path.join( BASE_RESOURCE_PATH, "lib" ) )

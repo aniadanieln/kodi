@@ -5,8 +5,8 @@ import urllib, urllib2, re, sys, math
 import xbmcaddon, xbmc, xbmcgui
 import urlparse, httplib, random, string
 
-scriptID = 'wtyczka.polskie.media'
-scriptname = "Polskie Media"
+scriptID = 'plugin.video.mrknow'
+scriptname = "Wtyczka XBMC www.mrknow.pl"
 ptv = xbmcaddon.Addon(scriptID)
 
 import z_pLog, Parser, settings, libCommon, urlparser
