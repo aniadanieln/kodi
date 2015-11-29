@@ -3,7 +3,7 @@
 <addon id="script.polskie.media"
        name="[COLOR=pink]Rozszerzenie dla [I]Polskie Media[/I][/COLOR]"
        provider-name="..::noVak::..™"
-	   version="1.1.1">
+	   version="1.1.2">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0"/>
 		<import addon="script.module.simplejson" version="2.0.10"/>

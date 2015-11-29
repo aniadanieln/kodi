@@ -46,7 +46,7 @@
 <addon id="script.polskie.media"
        name="[COLOR=pink]Rozszerzenie dla [I]Polskie Media[/I][/COLOR]"
        provider-name="..::noVak::..™"
-	   version="1.1.1">
+	   version="1.1.2">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0"/>
 		<import addon="script.module.simplejson" version="2.0.10"/>
@@ -63,7 +63,7 @@
 
 <addon id="wtyczka.polskie.media"
        name="[COLOR=pink]POLSKIE MEDIA[/COLOR]"
-       version="1.1.1"
+       version="1.1.2"
        provider-name="..::noVak::..™">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -82,7 +82,7 @@
 </addon>
 
 <addon  id="wtyczka.porndevil" 
-		version="1.1.0"
+		version="1.1.2"
 		name="[COLOR white][B]Porn[/B][/COLOR][COLOR yellow][B]Devil[/B][/COLOR]"
 		provider-name="..::noVak::..™">
 	<requires>

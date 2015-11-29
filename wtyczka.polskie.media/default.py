@@ -105,7 +105,7 @@ FILM_ONLINE_TABLE = {
              #7700: ["Films-online.pl","filmsonline"],
              7800: ["StrefaVod.pl","strefavod"],
              5100: ["Wrzuta.pl [testy]","wrzuta"],
-             7900: ["Vod.tvpl.pl [testy]","tvppl"],
+          #   7900: ["Vod.tvpl.pl [testy]","tvppl"],
              
 
 }
@@ -390,12 +390,12 @@ class MrknowFilms:
 
     def CATEGORIES(self):
         self.addDir("Telewizja", 1, False, 'Telewizja', False)
-        self.addDir('Telewizja, wymaga nowego librtmp', common.Mode2.VIEW, False, 'Testy', False)
+        self.addDir('Moduły', common.Mode2.VIEW, False, 'Testy', False)
         self.addDir("Filmy", 2, False, 'Filmy', False)
         self.addDir("Seriale", 3, False, 'Seriale', False)
         self.addDir("Rozrywka", 4, False, 'Rozrywka', False)
         self.addDir('Ustawienia', 20, True, 'Ustawienia', False)
-        self.addDir('[COLOR yellow]Aktualizuj LIBRTMP - aby dzialy kanaly TV - Patche KSV[/COLOR]',30, False, 'Ustawienia', False)
+        self.addDir('[COLOR yellow]Aktualizuj LIBRTMP[/COLOR]',30, False, 'Ustawienia', False)
         xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
     def listsTable(self, table):
@@ -512,7 +512,7 @@ class MrknowFilms:
         # if it's the main menu, add folder 'Favourites' and 'Custom Modules
         if url == self.MAIN_MENU_FILE:
             tmp = ListItem.create()
-            tmp['title'] = 'Favourites'
+            tmp['title'] = 'Ulubione'
             tmp['type'] = 'rss'
             tmp['icon'] = os.path.join(common.Paths.imgDir, 'bookmark.png')
             tmp['url'] = str(common.Paths.favouritesFile)
@@ -531,7 +531,7 @@ class MrknowFilms:
                 url = os.path.normpath(os.path.join(common.Paths.favouritesFolder, url))
 
             tmp = ListItem.create()
-            tmp['title'] = 'Add item...'
+            tmp['title'] = 'Dodaj...'
             tmp['type'] = 'command'
             tmp['icon'] = os.path.join(common.Paths.imgDir, 'bookmark_add.png')
             action = 'RunPlugin(%s)' % (self.base + '?mode=' + str(common.Mode2.ADDITEM) + '&url=' + url)
@@ -541,7 +541,7 @@ class MrknowFilms:
         # if it's the custom modules  menu, add item 'more...'
         elif url == common.Paths.customModulesFile:
             tmp = ListItem.create()
-            tmp['title'] = 'more...'
+            tmp['title'] = 'więcej...'
             tmp['type'] = 'command'
             #tmp['icon'] = os.path.join(common.Paths.imgDir, 'bookmark_add.png')
             action = 'RunPlugin(%s)' % (self.base + '?mode=' + str(common.Mode2.DOWNLOADCUSTOMMODULE) + '&url=')
