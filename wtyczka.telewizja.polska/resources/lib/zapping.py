@@ -4,7 +4,7 @@ import requests as requests
 xbmcPlayer = xbmc.Player()
 mode = sys.argv[1]
 idx = mode.replace("url=", "").split('***')
-xbmc.executebuiltin('XBMC.Notification('+idx[1]+' , Szukam adresu URL ,5000,'+idx[2]+')')
+xbmc.executebuiltin('XBMC.Notification('+idx[1]+' , Aktualnie odtwarzana audycja ,10000,'+idx[2]+')')
 url = idx[0]
 
 def zapp(url,idx):
