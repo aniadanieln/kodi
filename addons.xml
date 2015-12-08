@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addons><!--############################################################################-->
+<addons>
 <!--——————————————————————————————————— REPOZYTORIA ————————————————————————————————————-->
 
 <addon 	id="repository.neopack1" 
-		name="[B][COLOR=aqua]ALTERNATYWNE[/COLOR] [COLOR=red]POLSKIE[/COLOR] [COLOR=lime]WTYCZKI[/COLOR][/B]"  
+		name="[B][COLOR aqua]ALTERNATYWNE[/COLOR] [COLOR red]POLSKIE[/COLOR] [COLOR lime]WTYCZKI[/COLOR][/B]"  
 		version="1.1.1" 
 		provider-name="..::noVak::..™">
 	<extension point="xbmc.addon.repository" name="Alternatywne Polskie Wtyczki">
@@ -119,7 +119,6 @@
     </extension>
 </addon>
 
-
 	<addon id="wtyczka.telewizja.polska" name="[COLOR ff8cff66]Telewizja Polska[/COLOR]" version="1.0.0" provider-name="..::noVak::..™">
 		<requires>
 			<import addon="xbmc.python" version="2.1.0"/>
@@ -135,6 +134,7 @@
 	</addon>
 
 
+<!--—————————————————————— USUNĄĆ DO KOŃCA 2015 ROKU ———————————————————————————-->
 	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 	<addon id="plugin.video.iptvxtra-polen" name="[LIGHT][COLOR ff666666]DODATEK NIEWSPIERANY -IPTVxtra[/COLOR] - [COLOR ff5d2323]!UWAGA! [B]WTYCZKA NIE JEST JUŻ WSPIERANA[/B] (więcej info w opisie) [/COLOR][/LIGHT]" version="9.9.9" provider-name="..::noVak::..™">
 		<requires>
