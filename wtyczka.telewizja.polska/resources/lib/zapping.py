@@ -4,18 +4,21 @@ import requests as requests
 xbmcPlayer = xbmc.Player()
 mode = sys.argv[1]
 idx = mode.replace("url=", "").split('***')
-xbmc.executebuiltin('XBMC.Notification('+idx[1]+' , Aktualnie odtwarzana audycja ,10000,'+idx[2]+')')
+#xbmc.executebuiltin('XBMC.Notification('+idx[1]+' , Aktualnie odtwarzana audycja ,20000,'+idx[2]+')')
+
 url = idx[0]
 
 def zapp(url,idx):
 
     if 'looknij.tv' in url:
+        xbmc.executebuiltin('XBMC.Notification(Szukam transmisji ,'+idx[1]+',5000,'+idx[2]+')')
         urlpl = requests.get(url)
         pattern = '<div class="yendifplayer".*?src="([^"]+)".*?data-rtmp="([^"]+)"'
         rResult = parse(urlpl.text, pattern)
         xResult = rResult[1][0]
         url = xResult[1]+' playpath='+xResult[0]+' swfUrl=http://looknij.tv/wp-content/plugins/yendif-player/public/assets/libraries/player.swf?1438149198120 pageUrl=http://looknij.tv live=1'
     else:
+        xbmc.executebuiltin('XBMC.Notification(Odtwarzanie ,'+idx[1]+',15000,'+idx[2]+')')
         url = requests.get('http://tvpstream.tvp.pl/sess/tvplayer.php?object_id=' + idx[0])
         url = find_between(url.text,"0:{src:'http://",".m3u8")
         url = "http://"+url+".m3u8"
