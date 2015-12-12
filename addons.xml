@@ -2,20 +2,21 @@
 <addons>
 <!--——————————————————————————————————— REPOZYTORIA ————————————————————————————————————-->
 
-<addon 	id="repository.neopack1" 
-		name="[B][COLOR aqua]ALTERNATYWNE[/COLOR] [COLOR red]POLSKIE[/COLOR] [COLOR lime]WTYCZKI[/COLOR][/B]"  
-		version="1.1.1" 
+<addon 	id="repository.novak" 
+		name=" [B][COLOR aqua]« ..::noVak::..™ »[/COLOR][/B]  [COLOR gold]POLSKIE WTYCZKI[/COLOR]"  
+		version="2.0.0" 
 		provider-name="..::noVak::..™">
-	<extension point="xbmc.addon.repository" name="Alternatywne Polskie Wtyczki">
+	<extension point="xbmc.addon.repository" name="Polskie Wtyczki - Repozytorium">
 		<info compressed="true">https://raw.githubusercontent.com/neopack1/kodi/master/addons.xml</info>
 		<checksum>https://raw.githubusercontent.com/neopack1/kodi/master/addons.xml.md5</checksum>
 		<datadir zip="true">https://raw.githubusercontent.com/neopack1/kodi/master</datadir>
 	</extension>
 	<extension point="xbmc.addon.metadata">
-		<summary>- Only For Polish Users -</summary>
-		<description>[B][COLOR pink]!!! ONLY POLISH LANGUAGE !!![/COLOR][/B] [CR] [CR][I]Repozytorium zawiera alternatywne i przetłumaczone wersje popularnych wtyczek, mniej lub bardziej przerobione na własne potrzeby. Dodatkowo repozytorium zawiera wymagane przez te wtyczki biblioteki i skrypty.[/I]</description>
-		<disclaimer>[COLOR red]Autorzy nie ponoszą odpowiedzialności za materiały zamieszczane przez serwisy do których dostęp zapewniają zamieszczone wtyczki.[CR] Repozytorium oraz wtyczki rozpowszechniane są na zasadach Open Source licencji GPL 2 [CR] (GNU GENERAL PUBLIC LICENSE Version 2, June 1991)[/COLOR]</disclaimer>
+		<summary>Polskie wtyczki</summary>
+		<description>[B][COLOR red]!!! ONLY FOR POLISH USERS !!![/COLOR][/B][CR][CR][I]Repozytorium zawiera alternatywne wersje popularnych wtyczek. Dodatkowo repozytorium zawiera wymagane przez te wtyczki biblioteki i skrypty.[/I]</description>
+		<disclaimer>[COLOR lightblue]Autor nie ponosi odpowiedzialności za materiały zamieszczane przez serwisy do których dostęp zapewniają wtyczki. [CR]Wtyczki rozpowszechniane są na zasadach licencji GPL 2 [CR][I](GNU GENERAL PUBLIC LICENSE Version 2, June 1991)[/I][/COLOR]</disclaimer>
 		<platform>all</platform>
+		<email>neopack1@gmail.com</email>
 	</extension>
 </addon>
 
@@ -119,7 +120,7 @@
     </extension>
 </addon>
 
-	<addon id="wtyczka.telewizja.polska" name="[COLOR ff8cff66]Telewizja Polska[/COLOR]" version="1.0.1" provider-name="..::noVak::..™">
+	<addon id="wtyczka.telewizja.polska" name="  [COLOR ff8cff66]TELEWIZJA POLSKA[/COLOR]  " version="1.0.2" provider-name="..::noVak::..™">
 		<requires>
 			<import addon="xbmc.python" version="2.1.0"/>
 		</requires>
@@ -133,23 +134,6 @@
 		</extension>
 	</addon>
 
-
-<!--—————————————————————— USUNĄĆ DO KOŃCA 2015 ROKU ———————————————————————————-->
-	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-	<addon id="plugin.video.iptvxtra-polen" name="[LIGHT][COLOR ff666666]DODATEK NIEWSPIERANY -IPTVxtra[/COLOR] - [COLOR ff5d2323]!UWAGA! [B]WTYCZKA NIE JEST JUŻ WSPIERANA[/B] (więcej info w opisie) [/COLOR][/LIGHT]" version="9.9.9" provider-name="..::noVak::..™">
-		<requires>
-			<import addon="xbmc.python" version="2.1.0"/>
-			<import addon="wtyczka.telewizja.polska" version="1.0.0"/>
-		</requires>
-		<extension point="xbmc.python.pluginsource" library="default.py">
-			<provides>video</provides>
-		</extension>
-		<extension point="xbmc.addon.metadata">
-			<summary> [COLOR red]Projekt zakończony[/COLOR]   </summary>
-			<description>[COLOR lightred]!UWAGA![/COLOR][CR]Projekt wtyczki został zakończony![CR][CR]Dalszy rozwój i aktualizacje wtyczki zostały całkowicie wstrzymane i nie będą kontynuowane. Wtyczka została zamieniona przez nowocześniejszą wersję,którą można już instalować. Nowy projekt znajdziesz nosi nazwę [COLOR yellow][B]Telewizja Polska[/B][/COLOR] i jest dostępny w repozytorium. TPTVxtra całkowicie zniknie z repozytorium do końca 2015 roku.[CR][CR][I][COLOR white]    MIŁEGO OGLĄDANIA![/COLOR][/I]</description>
-			<platform>all</platform>
-		</extension>
-	</addon>
 
 <!--—————————————————————————————————— KONIEC LISTY ————————————————————————————————————-->
 </addons><!--###########################################################################-->
