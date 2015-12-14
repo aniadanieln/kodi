@@ -120,7 +120,7 @@
     </extension>
 </addon>
 
-	<addon id="wtyczka.telewizja.polska" name="  [COLOR ff8cff66]TELEWIZJA POLSKA[/COLOR]  " version="1.0.3" provider-name="..::noVak::..™">
+	<addon id="wtyczka.telewizja.polska" name="  [COLOR ff8cff66]TELEWIZJA POLSKA[/COLOR]  " version="1.0.4" provider-name="..::noVak::..™">
 		<requires>
 			<import addon="xbmc.python" version="2.1.0"/>
 		</requires>
