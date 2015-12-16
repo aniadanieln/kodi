@@ -341,10 +341,48 @@ def telewizja():
 
 
 def itivi():
+    addLink("TVP1","rtmp://weeb.tv.itivi.pl/live/ playpath=RTS?user=demo&pass=demopassword swfUrl=http://itivi.pl/js/jwplayer-7.0.3/jwplayer.flash.swf pageUrl=http://itivi.pl/program-telewizyjny/TVP_1_HD",tv+'tvp_1.png')
+    addLink("TVP2","rtmp://weeb.tv.itivi.pl/live/ playpath=SXT2?user=demo&pass=demopassword swfUrl=http://itivi.pl/js/jwplayer-7.0.3/jwplayer.flash.swf pageUrl=http://itivi.pl/program-telewizyjny/TVP_2",tv+'tvp_2.png')
+    addLink("TVN","rtmp://weeb.tv.itivi.pl/live/ playpath=S2T2?user=demo&pass=demopassword swfUrl=http://itivi.pl/js/jwplayer-7.0.3/jwplayer.flash.swf pageUrl=http://itivi.pl/program-telewizyjny/TVN",tv+'tvn.png')
+    addLink("TVN24","rtmp://weeb.tv.itivi.pl/live/ playpath=CH1?user=demo&pass=demopassword swfUrl=http://itivi.pl/js/jwplayer-7.0.3/jwplayer.flash.swf pageUrl=http://itivi.pl/program-telewizyjny/TVN24_",tv+'tvn_24.png')
+    addLink("Polsat 2","rtmp://weeb.tv.itivi.pl/live/ playpath=POL2PL?user=demo&pass=demopassword swfUrl=http://itivi.pl/js/jwplayer-7.0.3/jwplayer.flash.swf pageUrl=http://itivi.pl/program-telewizyjny/POLSAT_2",tv+'polsat_2.png')
+    addLink("Discovery","rtmp://weeb.tv.itivi.pl/live/ playpath=CHDN?user=demo&pass=demopassword swfUrl=http://itivi.pl/js/jwplayer-7.0.3/jwplayer.flash.swf pageUrl=http://itivi.pl/program-telewizyjny/Discovery_Channel",tv+'discovery_channel.png')
+    addLink("HBO Comedy","rtmp://weeb.tv.itivi.pl/live/ playpath=CHA2?user=demo&pass=demopassword swfUrl=http://itivi.pl/js/jwplayer-7.0.3/jwplayer.flash.swf pageUrl=http://itivi.pl/program-telewizyjny/HBO_COMEDY",tv+'hbo_comedy.png')
+    addLink("TVP Seriale","rtmp://weeb.tv.itivi.pl/live/ playpath=CH1TSC?user=demo&pass=demopassword swfUrl=http://itivi.pl/js/jwplayer-7.0.3/jwplayer.flash.swf pageUrl=http://itivi.pl/program-telewizyjny/TVP_SERIALE",tv+'tvp_seriale.png')
+    addLink("Kino Polska","rtmp://weeb.tv.itivi.pl/live/ playpath=CH304?user=demo&pass=demopassword swfUrl=http://itivi.pl/js/jwplayer-7.0.3/jwplayer.flash.swf pageUrl=http://itivi.pl/program-telewizyjny/KINO_POLSKA",tv+'kino_polska.png')
+    addLink("National Geographic","rtmp://weeb.tv.itivi.pl/live/ playpath=S323?user=demo&pass=demopassword swfUrl=http://itivi.pl/js/jwplayer-7.0.3/jwplayer.flash.swf pageUrl=http://itivi.pl/program-telewizyjny/NATGEO_PL",tv+'national_geographic.png')
+    addLink("Eurosport","rtmp://weeb.tv.itivi.pl/live/ playpath=CH174?user=demo&pass=demopassword swfUrl=http://itivi.pl/js/jwplayer-7.0.3/jwplayer.flash.swf pageUrl=http://itivi.pl/program-telewizyjny/EURO_SPORT",tv+'eurosport.png')
+    addLink("AXN","rtmp://weeb.tv.itivi.pl/live/ playpath=CHA1?user=demo&pass=demopassword swfUrl=http://itivi.pl/js/jwplayer-7.0.3/jwplayer.flash.swf pageUrl=http://itivi.pl/program-telewizyjny/AXN_HD",tv+'axn.png')
+    addLink("nSport+","rtmp://weeb.tv.itivi.pl/live/ playpath=CH500?user=demo&pass=demopassword swfUrl=http://itivi.pl/js/jwplayer-7.0.3/jwplayer.flash.swf pageUrl=http://itivi.pl/program-telewizyjny/NSPORT_HD",tv+'nsport_plus.png')
+    addLink("MTV Polska","rtmp://weeb.tv.itivi.pl/live/ playpath=CH3?user=demo&pass=demopassword swfUrl=http://itivi.pl/js/jwplayer-7.0.3/jwplayer.flash.swf pageUrl=http://itivi.pl/program-telewizyjny/MTV_POLSKA",tv+'mtv.png')
+    addLink("FilBox Premium","rtmp://51.255.51.111/live/ playpath=S1 swfUrl=http://itivi.pl/js/jwplayer-7.0.3/jwplayer.flash.swf pageUrl=http://itivi.pl/program-telewizyjny/FILMBOX_PREMIUM",tv+'filmbox_premium.png')
+    addLink("Moto Wizja","rtmp://weeb.tv.itivi.pl/live/ playpath=CH10?user=demo&pass=demopassword swfUrl=http://itivi.pl/js/jwplayer-7.0.3/jwplayer.flash.swf pageUrl=http://itivi.pl/program-telewizyjny/MOTOWIZJA",tv+'moto_wizja.png')
+    addLink("Cinemax","rtmp://weeb.tv.itivi.pl/live/ playpath=CH8?user=demo&pass=demopassword swfUrl=http://itivi.pl/js/jwplayer-7.0.3/jwplayer.flash.swf pageUrl=http://itivi.pl/program-telewizyjny/CINEMAX_HD",tv+'cinemax.png')
+    addLink("HBO","rtmp://weeb.tv.itivi.pl/live/ playpath=CH7?user=demo&pass=demopassword swfUrl=http://itivi.pl/js/jwplayer-7.0.3/jwplayer.flash.swf pageUrl=http://itivi.pl/program-telewizyjny/HBO_HD",tv+'hbo.png')
+    addLink("TVN Turbo","rtmp://weeb.tv.itivi.pl/live/ playpath=CH6?user=demo&pass=demopassword swfUrl=http://itivi.pl/js/jwplayer-7.0.3/jwplayer.flash.swf pageUrl=http://itivi.pl/program-telewizyjny/TVN_TURBO",tv+'tvn_turbo.png')
+    addLink("Discovery Historia","rtmp://weeb.tv.itivi.pl/live/ playpath=CH5?user=demo&pass=demopassword swfUrl=http://itivi.pl/js/jwplayer-7.0.3/jwplayer.flash.swf pageUrl=http://itivi.pl/program-telewizyjny/DISCOVERY_HISTORIA",tv+'discovery_historia.png')
+    addLink("Polsat","rtmp://weeb.tv.itivi.pl/live/ playpath=SPL?user=demo&pass=demopassword swfUrl=http://itivi.pl/js/jwplayer-7.0.3/jwplayer.flash.swf pageUrl=http://itivi.pl/program-telewizyjny/POLSAT_HD",tv+'polsat.png')
+
+    xbmcplugin.endOfDirectory(int(sys.argv[1]))
+    sys.exit(0)
+
+def testy():
+
+    addLink("TEST","rtmp://weeb.tv.itivi.pl/live playpath=S2T2?user=demo&pass=demopassword swfUrl=http://itivi.pl/js/jwplayer-7.0.3/jwplayer.flash.swf pageUrl=http://itivi.pl/program-telewizyjny/TVN",'none')
+    
+    
+    
+    addLink("playlista",xbmc.translatePath("D:\pulpit\lista.m3u"),'none')
+
+    
+    
+    
+    
+    
     addLink("TVP1", "rtmp://37.187.98.152/live/RTS", tv+'tvp_1.png')
     addLink("TVP2", "rtmp://158.69.223.5/live/ST2", tv+'tvp_2.png')
     addLink("Polsat", "rtmp://158.69.223.5/live/S1", tv+'polsat.png')
-    addLink("TVN", "rtmp://51.255.51.112/live/S2", tv+'tvn.png')
+    addLink("TVN", "rtmp://weeb.tv.itivi.pl/live playpath=S2T2?user=demo&pass=demopassword swfUrl=http://itivi.pl/js/jwplayer-7.0.3/jwplayer.flash.swf pageUrl=http://itivi.pl/program-telewizyjny/TVN", tv+'tvn.png')
     addLink("TVN24", "rtmp://weeb.tv.itivi.pl/live/CH1", tv+'tvn_24.png')
     addLink("Polsat 2", "rtmp://51.255.51.112/live/S1", tv+'polsat_2.png')
     addLink("Discovery", "rtmp://weeb.tv.itivi.pl/live/CHDN", tv+'discovery_channel.png')
@@ -360,14 +398,10 @@ def itivi():
     addLink("FilmBox", "rtmp://51.255.51.111/live/S1", tv+'filmbox.png')
     addLink("Moto Wizja", "rtmp://weeb.tv.itivi.pl/live/CH10", tv+'moto_wizja.png')
     addLink("Cinemax", "rtmp://weeb.tv.itivi.pl/live/CH8", tv+'cinemax.png')
-    addLink("HBO", "rtmp://weeb.tv.itivi.pl/live/CH7", tv+'hbo.png')
+    addLink("HBO", "", tv+'hbo.png')
     addLink("TVN Turbo", "rtmp://weeb.tv.itivi.pl/live/CH6", tv+'tvn_turbo.png')
     addLink("Discovery Historia", "rtmp://weeb.tv.itivi.pl/live/CH5", tv+'discovery_historia.png')
-    addLink("Canal+", "rtmp://37.187.98.152/live/CHF", tv+'canal_plus.png')
-
+    addLink("Canal+ Film", "rtmp://37.187.98.152/live/CHF", tv+'canal_plus_film.png')
     xbmcplugin.endOfDirectory(int(sys.argv[1]))
     sys.exit(0)
-
-
-
 main()
