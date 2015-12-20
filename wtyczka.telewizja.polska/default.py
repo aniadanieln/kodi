@@ -1,4 +1,4 @@
-# -*- coding: cp1250 -*-
+# -*- coding: utf-8 -*-
 #from __future__ import unicode_literals
  
 import sys,xbmc,xbmcaddon
@@ -7,15 +7,14 @@ import re,os,xbmcplugin,xbmcgui
 
 addon_handle = int(sys.argv[1])
 xbmcplugin.setContent(addon_handle, 'movies')
-skin_used = xbmc.getSkinDir()
-if skin_used == 'skin.confluence':
-    xbmc.executebuiltin('Container.SetViewMode(500)') # "Thumbnail" view
+xbmc.executebuiltin('Container.SetViewMode(500)') # "Thumbnail" view
     
 Addon = xbmcaddon.Addon('wtyczka.telewizja.polska')
 home = Addon.getAddonInfo('path')
 
 sys.path.append( xbmc.translatePath("special://home/addons/wtyczka.telewizja.polska/resources/lib") )
 sys.path.append( xbmc.translatePath("special://home/addons/wtyczka.telewizja.polska/obrazy") )
+sys.path.append( xbmc.translatePath("special://home/addons/wtyczka.telewizja.polska/host/strm") )
 sys.path.append( os.path.join( Addon.getAddonInfo('path'), "host" ) )
 
 
@@ -32,7 +31,8 @@ iconimage = icon
 eskaicon = xbmc.translatePath( os.path.join( home, 'resources/lib/eska.png' ) )
 eskaricon = xbmc.translatePath( os.path.join( home, 'resources/lib/eskar.png' ) )
 net = xbmc.translatePath( os.path.join( home, 'resources/lib/net.png') )
-
+telewizjada = xbmc.translatePath('special://home/addons/wtyczka.telewizja.polska/host/strm/')
+update = xbmc.translatePath( os.path.join( home, 'host/update.bat' ) )
 
 fanart = xbmc.translatePath( os.path.join( home, 'fanart.jpg' ) )
 
@@ -60,17 +60,18 @@ def main():
     elif 'xcat5' in mode: filmboxlive()
     elif 'xcat6' in mode: lokalna()
     elif 'xcat7' in mode: itivi()
-#    elif 'xcat8' in mode: testy()
+    elif 'xcat8' in mode: youtube()
+    elif 'xcat9' in mode: telewizjada()
     else:
-        addDir('[COLOR gold][B] Telewizja [/B][/COLOR]', 'plugin://wtyczka.telewizja.polska/?xcat4x', images+'dir_tv.png')
-        addDir(' FilmBox Live ', 'plugin://wtyczka.telewizja.polska/?xcat5x', images+'dir_filmboxlive.png' )
-        addDir(' ITIVI ', 'plugin://wtyczka.telewizja.polska/?xcat7x', images+'dir_itivi.png')
+        addDir('[COLOR gold][B] Telewizjada [/B][/COLOR][CR](testy)', 'plugin://wtyczka.telewizja.polska/?xcat9x', images+'dir_telewizjada.png')
+        addDir('[B] Telewizja [/B]', 'plugin://wtyczka.telewizja.polska/?xcat4x', images+'dir_tv.png')
+        addDir('[B]FilmBox[/B][CR][COLOR red] Live [/COLOR] ', 'plugin://wtyczka.telewizja.polska/?xcat5x', images+'dir_filmboxlive.png' )
+        addDir('[B]ITIVI[/B][CR]Telewizja Internetowa', 'plugin://wtyczka.telewizja.polska/?xcat7x', images+'dir_itivi.png')
         addDir(' Looknij TV ', 'plugin://wtyczka.telewizja.polska/?xcat3', images+'dir_looknijtv.png' )
         addDir(' Eska GO ', 'plugin://wtyczka.telewizja.polska/?xcat2x', images+'dir_eskago.png')
-        addDir('TVP Stream', 'plugin://wtyczka.telewizja.polska/?xcat1x', images+'dir_tvpstream.png')
-        addDir('TV Lokalna', 'plugin://wtyczka.telewizja.polska/?xcat6x', images+'dir_tvlokalna.png')
-#        addDir('  TESTY  ', 'plugin://wtyczka.telewizja.polska/?xcat8x', icon)
-        
+        addDir('TVP[CR]Stream', 'plugin://wtyczka.telewizja.polska/?xcat1x', images+'dir_tvpstream.png')
+        addDir('Telewizja[CR]Lokalna', 'plugin://wtyczka.telewizja.polska/?xcat6x', images+'dir_tvlokalna.png')
+        addDir('[B][COLOR white]You[/COLOR][COLOR red]Tube[/COLOR][/B][CR]KanaÅ‚y', 'plugin://wtyczka.telewizja.polska/?xcat8x', images+'dir_youtube.png')
         xbmcplugin.endOfDirectory(int(sys.argv[1]))
         sys.exit(0)
     
@@ -219,7 +220,7 @@ def filmboxlive():
     addLink("Kino Polska HD             ", "http://inea.live.e238-po.insyscd.net/kinopolska.smil/chunklist_.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'kino_polska.png') 
     addLink("Kino Polska Muzyka         ", "http://spi-live.ercdn.net/spi/smil:kinopolskamuzikasd_international_0.smil/chunklist_b800000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'kino_polska_muzyka.png') 
     addLink("ArtHouse HD                ", "http://spi-live.ercdn.net/spi/smil:fbarthousesd_pl_0.smil/chunklist_b800000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'FilmBox_Arthouse.png') 
-    addLink("DocuBox HD                 ", "http://spi-live.ercdn.net/spi/smil:docuboxhd_0.smil/chunklist_b1600000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'docubox.png') 
+    addLink("DocuBox HDÂ Â Â Â Â             ", "http://spi-live.ercdn.net/spi/smil:docuboxhd_0.smil/chunklist_b1600000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'docubox.png') 
     addLink("FasionBox HD               ", "http://spi-live.ercdn.net/spi/smil:fashionboxhd_0.smil/chunklist_b1600000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'fasionbox.png') 
     addLink("360TuneBox HD              ", "http://spi-live.ercdn.net/spi/smil:360tuneboxhd_0.smil/chunklist_b1600000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'360_tunebox.png') 
     addLink("Fast'n'Fun HD              ", "http://spi-live.ercdn.net/spi/smil:fastnfunhd_0.smil/chunklist_b1200000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'fastandfunbox.png') 
@@ -279,9 +280,9 @@ def zagraniczne():
 ########################################################################################################
 def telewizja():
 
-    addLink("4fun Fit 'n' Dance TEST","rtmp://edge4.popler.tv:1935/publishlive/tvdisco swfUrl=swfUrl=http://www.popler.tv/live/tvdisco live=1",tv+'4_fun_fit_dance.png')
+    addLink("4fun TV","rtmp://edge4.popler.tv:1935/publishlive?play=123452/4funtv live=1 swfUrl=http://images.popler.tv/player/flowplayer.commercial.swf pageUrl=http://www.popler.tv/live/4funtv",tv+'4_fun_tv.png')
 #C
-    #addLink("Cinemax", "rtmp://149.202.68.200/live/cinemaxhd live=true timeout=15", tv+'cinemax.png')
+    addLink("CzwÃ³rka Polskie Radio", "rtmp://stream85.polskieradio.pl/video/czworka.sdp", radio+'pr4.png')
 #D
     addLink("Discovery [I]HD[/I]", "http://inea.live.e238-po.insyscd.net/discoverychannelhd.smil/chunklist_b2400000.m3u8", tv+'discovery_channel.png')
     addLink("Discovery ID [I]HD[/I]", "http://inea.live.e238-po.insyscd.net/id.smil/chunklist_.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'id.png') 
@@ -290,6 +291,7 @@ def telewizja():
     addLink("Discovery Turbo Xtra [I]HD[/I]", "http://inea.live.e238-po.insyscd.net/dtx.smil/chunklist_.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'discovery_turbo_xtra.png') 
 
 #E
+    addLink("Edusat", "rtmp://178.73.10.66:1935/live/mpegts.stream", tv+'edusat.png')
     addLink("Eurosport [I]HD[/I]", "http://inea.live.e238-po.insyscd.net/eurosport.smil/chunklist_b2400000.m3u8", tv+'eurosport.png')
     addLink("Eurosport 2 [I]HD[/I]", "http://inea.live.e238-po.insyscd.net/eurosport2hd.smil/chunklist_b2400000.m3u8", tv+'eurosport_2.png')
 
@@ -327,7 +329,6 @@ def telewizja():
 #T
     addLink("TLC [I]HD[/I]", "http://inea.live.e238-po.insyscd.net/tlchd.smil/chunklist_b2400000.m3u8", tv+'tlc.png')
     addLink("Trwam", "http://trwamtv.live.e96-jw.insyscd.net/trwamtv.smil/playlist.m3u8 live=true", tv+'trwam.png') 
-
     addLink("TVP Info [I]HD[/I]   ", "http://195.245.213.230/live/warszawa.isml/warszawa.m3u8 live=true", tv+'tvp_info.png')
     addLink("TVP Seriale", "rtmp://144.76.154.14/live/tvpseriale live=true", tv+'tvp_seriale.png') 
     addLink("TVP Warszawa [I]HD[/I]", "http://195.245.213.230/live/warszawa2.isml/warszawa2.m3u8 live=true", tv+'tvp_warszawa.png') 
@@ -366,42 +367,25 @@ def itivi():
     xbmcplugin.endOfDirectory(int(sys.argv[1]))
     sys.exit(0)
 
-def testy():
+def telewizjada():
+    xbmc.executebuiltin("Notification([COLOR red]Telewizjada[/COLOR],Uruchom UPDATE.EXE aby aktualizowaÄ‡ linki, 10000)")
 
-    addLink("TEST","rtmp://weeb.tv.itivi.pl/live playpath=S2T2?user=demo&pass=demopassword swfUrl=http://itivi.pl/js/jwplayer-7.0.3/jwplayer.flash.swf pageUrl=http://itivi.pl/program-telewizyjny/TVN",'none')
-    
-    
-    
-    addLink("playlista",xbmc.translatePath("D:\pulpit\lista.m3u"),'none')
+    addLink("13 Ulica",telewizjada+'13_Ulica.strm', tv+'13_ulica.png')
+    addLink("AleKino+",telewizjada+'ale_kino_plus.strm', tv+'ale_kino_plus.png')
 
-    
-    
-    
-    
-    
-    addLink("TVP1", "rtmp://37.187.98.152/live/RTS", tv+'tvp_1.png')
-    addLink("TVP2", "rtmp://158.69.223.5/live/ST2", tv+'tvp_2.png')
-    addLink("Polsat", "rtmp://158.69.223.5/live/S1", tv+'polsat.png')
-    addLink("TVN", "rtmp://weeb.tv.itivi.pl/live playpath=S2T2?user=demo&pass=demopassword swfUrl=http://itivi.pl/js/jwplayer-7.0.3/jwplayer.flash.swf pageUrl=http://itivi.pl/program-telewizyjny/TVN", tv+'tvn.png')
-    addLink("TVN24", "rtmp://weeb.tv.itivi.pl/live/CH1", tv+'tvn_24.png')
-    addLink("Polsat 2", "rtmp://51.255.51.112/live/S1", tv+'polsat_2.png')
-    addLink("Discovery", "rtmp://weeb.tv.itivi.pl/live/CHDN", tv+'discovery_channel.png')
-    addLink("AXN", "rtmp://weeb.tv.itivi.pl/live/CHA1", tv+'axn.png')
-    addLink("Eska TV", "rtmp://stream.smcloud.net/live2/eskatv/eskatv_360p", tv+'eska.png')
-    addLink("Kino Polska", "rtmp://weeb.tv.itivi.pl/live/CH304", tv+'kino_polska.png')
-    addLink("TVP Seriale", "rtmp://37.187.98.152/live/CHSE", tv+'tvp_seriale.png')
-    addLink("National Geographic", "rtmp://weeb.tv.itivi.pl/live/S323", tv+'national_geographic.png')
-    addLink("Eurosport", "rtmp://weeb.tv.itivi.pl/live/CH174", tv+'eurosport.png')
-    addLink("HBO Comedy", "rtmp://weeb.tv.itivi.pl/live/CHA2", tv+'hbo_comedy.png')
-    addLink("nSport+", "rtmp://weeb.tv.itivi.pl/live/CH500", tv+'nsport_plus.png')
-    addLink("MTV Polska", "rtmp://weeb.tv.itivi.pl/live/CH3", tv+'mtv.png')
-    addLink("FilmBox", "rtmp://51.255.51.111/live/S1", tv+'filmbox.png')
-    addLink("Moto Wizja", "rtmp://weeb.tv.itivi.pl/live/CH10", tv+'moto_wizja.png')
-    addLink("Cinemax", "rtmp://weeb.tv.itivi.pl/live/CH8", tv+'cinemax.png')
-    addLink("HBO", "", tv+'hbo.png')
-    addLink("TVN Turbo", "rtmp://weeb.tv.itivi.pl/live/CH6", tv+'tvn_turbo.png')
-    addLink("Discovery Historia", "rtmp://weeb.tv.itivi.pl/live/CH5", tv+'discovery_historia.png')
-    addLink("Canal+ Film", "rtmp://37.187.98.152/live/CHF", tv+'canal_plus_film.png')
+                            
     xbmcplugin.endOfDirectory(int(sys.argv[1]))
     sys.exit(0)
+    
+def youtube():
+
+    xbmc.executebuiltin('Container.SetViewMode(500)') # "Thumbnail" view
+    addDir('Blok Ekipa', 'plugin://plugin.video.youtube/channel/UCxJDH_2HXzwUtT62HgWJqCg/playlist/PLdhsyudOIKSbc-Hx6JWgKgrC8GtVV2Zl-/', images+'blok_ekipa.png')
+    addDir(' iTVP ', 'plugin://plugin.video.youtube/channel/UC03sVDw-tRhwDuQACRFBpGw/playlists/', images+'dir_itvp.png')
+    
+
+    xbmcplugin.endOfDirectory(int(sys.argv[1]))
+    sys.exit(0)
+    
+    
 main()

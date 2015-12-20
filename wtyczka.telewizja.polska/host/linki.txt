@@ -1,0 +1,71 @@
+TVP 1,http://l139.telewizjada.net:1935/tw/2014tvtvp1,tvp_1
+TVP 2,http://l138.telewizjada.net:1935/tw/2014tvtvp2,tvp_2
+Polsat,http://l138.telewizjada.net:1935/tw/2014tvpolsat,polsat
+TVN,http://l139.telewizjada.net:1935/tw/2014tvtvn,tvn
+TVN 24,http://l137.telewizjada.net:1935/tw/2014tvtvn24,tvn_24
+TVN 24 BiS,http://l139.telewizjada.net:1935/tw/2014tvtvn24biznesiswiat,tvn_24_bis
+Polsat News,http://l137.telewizjada.net:1935/tw/2014tvpolsatnews,polsat_news
+TVP Info,http://l140.telewizjada.net:1935/tw/2014tvtvpinfo,tvp_info
+Republika,http://l140.telewizjada.net:1935/tw/2014tvtvrepublika,republika
+Superstacja,http://l140.telewizjada.net:1935/tw/2014tvsuperstacja,superstacja
+TV 4,http://l136.telewizjada.net:1935/tw/2014tvtv4,tv_4
+TV 6,http://l136.telewizjada.net:1935/tw/2014tvtv6,tv_6
+TVN 7,http://l136.telewizjada.net:1935/tw/2014tvtvn7,tvn_7
+TV Puls,http://l136.telewizjada.net:1935/tw/2014tvtvpuls,puls
+Alekino+,http://l136.telewizjada.net:1935/tw/2014tvalekinoplus,ale_kino_plus
+AXN,http://l137.telewizjada.net:1935/tw/2014tvaxn,axn
+AXN White,http://l139.telewizjada.net:1935/tw/2014tvaxnwhite,axn_white
+AXN Black,http://l139.telewizjada.net:1935/tw/2014tvaxnblack,axn_black
+Canal+,http://l138.telewizjada.net:1935/tw/2014tvcanalplushd,canal_plus
+Canal+ Film,http://l138.telewizjada.net:1935/tw/2014tvcanalplusfilmhd,canal_plus_film
+Canal+ Seriale,http://l138.telewizjada.net:1935/tw/2014tvcanalplusserialehd,canal_plus_seriale
+Canal+ Family,http://l138.telewizjada.net:1935/tw/2014tvcanalplusfamilyhd,canal_plus_family
+Cinemax,http://l137.telewizjada.net:1935/tw/2014tvcinemaxhd,cinemax
+Cinemax 2,http://l137.telewizjada.net:1935/tw/2014tvcinemax2hd,cinemax_2
+FilmBox,http://l137.telewizjada.net:1935/tw/2014tvfilmbox,filmbox
+FilmBox Action,http://l136.telewizjada.net:1935/tw/2014tvfilmboxaction,filmbox_action
+HBO,http://l136.telewizjada.net:1935/tw/2014tvhbohd,hbo
+HBO 2,http://l137.telewizjada.net:1935/tw/2014tvhbo2hd,hbo_2
+HBO Copmedy,http://l137.telewizjada.net:1935/tw/2014tvhbocomedyhd,hbo_comedy
+13 Ulica,http://l137.telewizjada.net:1935/tw/2014tv13ulica,13_ulica
+FOX,http://l138.telewizjada.net:1935/tw/2014tvfoxhd,fox
+Kino Polska,http://l138.telewizjada.net:1935/tw/2014tvkinopolska,kino_polska
+Polsat Film,http://l138.telewizjada.net:1935/tw/2014tvpolsatfilm,polsat_film
+SciFi,http://l139.telewizjada.net:1935/tw/2014tvscifi,scifi
+TNT,http://l139.telewizjada.net:1935/tw/2014tvtnt,tnt
+Universal,http://l139.telewizjada.net:1935/tw/2014tvuniversalchannel,universal_channel
+Canal+ Sport,http://l140.telewizjada.net:1935/tw/2014tvcanalplussporthd,canal_plus_sport
+Canal+ Sport 2,http://l140.telewizjada.net:1935/tw/2014tvcanalplussport2hd,canal_plus_sport_2
+Eleven,http://l138.telewizjada.net:1935/tw/2014tvelevenhd,eleven
+Eleven Sports,http://l138.telewizjada.net:1935/tw/2014tvelevensporthd,eleven_sports
+Eurosport,http://l137.telewizjada.net:1935/tw/2014tveurosport,eurosport
+Eurosport 2,http://l137.telewizjada.net:1935/tw/2014tveurosport2hd,eurosport_2
+nSport+,http://l139.telewizjada.net:1935/tw/2014tvnsport,nsport_plus
+Orange Sport,http://l139.telewizjada.net:1935/tw/2014tvorangesport,orange_sport
+Polsat Sport,http://l139.telewizjada.net:1935/tw/2014tvpolsatsport,polsat_sport
+Polsat Sport Extra,http://l140.telewizjada.net:1935/tw/2014tvpolsatsportextra,polsat_sport_extra
+TVP Sport,http://l140.telewizjada.net:1935/tw/2014tvtvpsporthd,tvp_sport
+MiniMini+,http://l138.telewizjada.net:1935/tw/2014tvminiminiplus,minimini_plus
+TVP abc,http://l138.telewizjada.net:1935/tw/2014tvtvpabc,tvp_abc
+Discovery,http://l139.telewizjada.net:1935/tw/2014tvdiscovery,discovery
+Discovery Science,http://l139.telewizjada.net:1935/tw/2014tvdiscoveryscience,discovery_science
+Discovery Historia,http://l137.telewizjada.net:1935/tw/2014tvdiscoveryhistoria,discovery_historia
+History,http://l137.telewizjada.net:1935/tw/2014tvhistory,history
+National Geographic,http://l137.telewizjada.net:1935/tw/2014tvnatgeo,national_geographic
+Nat Geo Wild,http://l140.telewizjada.net:1935/tw/2014tvnatgeowild,nat_geo_wild
+Planete+,http://l140.telewizjada.net:1935/tw/2014tvplaneteplus,planete_plus
+Polsat 2,http://l140.telewizjada.net:1935/tw/2014tvpolsat2,polsat_2
+Polsat Cafe,http://l138.telewizjada.net:1935/tw/2014tvpolsatcafe,polsat_cafe
+Polsat Play,http://l138.telewizjada.net:1935/tw/2014tvpolsatplay,polsat_play
+TVN Style,http://l138.telewizjada.net:1935/tw/2014tvtvnstyle,tvn_style
+TVN Turbo,http://l139.telewizjada.net:1935/tw/2014tvtvnturbo,tvn_turbo
+TVP Historia,http://l139.telewizjada.net:1935/tw/2014tvtvphistoria,tvp_historia
+Viasat Explore,http://l139.telewizjada.net:1935/tw/2014tvpolsatviasatexplore,polsat_viasat_expolore
+Viasat History,http://l137.telewizjada.net:1935/tw/2014tvpolsatviasathistory,polsat_viasat_history
+Viasat Nature,http://l137.telewizjada.net:1935/tw/2014tvpolsatviasatnature,polsat_viasat_nature
+TVP Polonia,http://l137.telewizjada.net:1935/tw/2014tvtvppolonia,tvp_polonia
+TVP Rozrywka,http://l138.telewizjada.net:1935/tw/2014tvtvprozrywka,tvp_rozrywka
+TVP Seriale,http://l138.telewizjada.net:1935/tw/2014tvtvpseriale,tvp_seriale
+XXX Hustler,http://l140.telewizjada.net:1935/tw/2014tvhustlerhd,hustler
+XXX Private,http://l140.telewizjada.net:1935/tw/2014tvprivatetv,private
+XXX RedLight,http://l140.telewizjada.net:1935/tw/2014tvredlighthd,redlight

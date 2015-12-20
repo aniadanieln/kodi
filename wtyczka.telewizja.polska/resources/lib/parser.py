@@ -1,37 +1,48 @@
-import re
+# -*- coding: utf-8 -*-
+import re, sys, os, cgi
+import urllib, urllib2
 
-class cParser:
+scriptID = sys.modules[ "__main__" ].scriptID
+scriptname = "mrknow Polish films online"
 
-    def parseSingleResult(self, sHtmlContent, sPattern):     
-        aMatches = re.compile(sPattern).findall(sHtmlContent)
-        if (len(aMatches) == 1):
-            aMatches[0] = self.__replaceSpecialCharacters(aMatches[0])
-            return True, aMatches[0]
-            return False, aMatches
-
-    def __replaceSpecialCharacters(self, sString):
-        return sString.replace('\\/','/')
-
-    def parse(self, sHtmlContent, sPattern, iMinFoundValue = 1, ignoreCase = False):
-        if ignoreCase:
-            aMatches = re.compile(sPattern, re.DOTALL|re.I).findall(sHtmlContent)
-        else:
-            aMatches = re.compile(sPattern, re.DOTALL).findall(sHtmlContent)
-        if (len(aMatches) >= iMinFoundValue):                
-            return True, aMatches
-        return False, aMatches
-
-    def replace(self, sPattern, sReplaceString, sValue):
-        return re.sub(sPattern, sReplaceString, sValue)
-
-    def escape(self, sValue):
-        return re.escape(sValue)
+class Parser:
+    def __init__(self):
+        pass
     
-    def getNumberFromString(self, sValue):
-        sPattern = "\d+"
-        aMatches = re.findall(sPattern, sValue)
-        if (len(aMatches) > 0):
-            return int(aMatches[0])
-        return 0
+    def getParam(self, params, name):
+        try:
+            result = params[name]
+            result = urllib.unquote_plus(result)
+            return result
+        except:
+            return None
 
-
+    def getIntParam (self, params, name):
+        try:
+            param = self.getParam(params, name)
+            return int(param)
+        except:
+            return None
+    
+    def getBoolParam (self, params, name):
+        try:
+            param = self.getParam(params,name)
+            return 'True' == param
+        except:
+            return None
+        
+    def getParams(self, paramstring = sys.argv[2]):
+        param=[]
+        if len(paramstring) >= 2:
+            params = paramstring
+            cleanedparams = params.replace('?', '')
+            if (params[len(params)-1] == '/'):
+                params = params[0:len(params)-2]
+            pairsofparams = cleanedparams.split('&')
+            param = {}
+            for i in range(len(pairsofparams)):
+                splitparams = {}
+                splitparams = pairsofparams[i].split('=')
+                if (len(splitparams)) == 2:
+                    param[splitparams[0]] = splitparams[1]
+        return param
