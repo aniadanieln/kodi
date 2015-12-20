@@ -368,11 +368,11 @@ def itivi():
     sys.exit(0)
 
 def telewizjada():
-    xbmc.executebuiltin("Notification([COLOR red]Telewizjada[/COLOR],Uruchom UPDATE.EXE aby aktualizować linki, 10000)")
+    xbmc.executebuiltin("Notification([COLOR red]Uruchom UPDATE.EXE[/COLOR],UPDATE.EXE znajdziesz w katalogu 'host' wtyczki, 10000)")
 
-    addLink("13 Ulica",telewizjada+'13_Ulica.strm', tv+'13_ulica.png')
-    addLink("AleKino+",telewizjada+'ale_kino_plus.strm', tv+'ale_kino_plus.png')
-
+    addLink("13 Ulica",'special://home/addons/wtyczka.telewizja.polska/host/strm/13_ulica.strm', tv+'13_ulica.png')
+    addLink("Polsat Sport",'special://home/addons/wtyczka.telewizja.polska/host/strm/polsat_sport.strm', tv+'polsat_sport.png')
+    addLink("Polsat Sport Extra",'special://home/addons/wtyczka.telewizja.polska/host/strm/polsat_sport_extra.strm', tv+'polsat_sport_extra.png')
                             
     xbmcplugin.endOfDirectory(int(sys.argv[1]))
     sys.exit(0)

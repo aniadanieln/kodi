@@ -9,7 +9,10 @@ __version__ = '1.0.1'
 
 addon = xbmcaddon.Addon(id='wtyczka.porndevil')
 rootDir = addon.getAddonInfo('path')
+
 xbmcplugin.setContent(int(sys.argv[1]), 'movies')
+xbmc.executebuiltin('Container.SetViewMode(500)') # "Thumbnail" view
+
 
 if rootDir[-1] == ';':
     rootDir = rootDir[0:-1]

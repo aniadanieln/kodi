@@ -11,7 +11,7 @@
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary>Polskie wtyczki</summary>
-		<description>[B][COLOR red]!!! ONLY FOR POLISH USERS !!![/COLOR][/B][CR][CR][I]Repozytorium zawiera alternatywne wersje popularnych wtyczek. Dodatkowo repozytorium zawiera wymagane przez te wtyczki biblioteki i skrypty.[/I]</description>
+		<description>[B][COLOR red]!!! ONLY FOR POLISH USERS !!![/COLOR][/B][CR][CR][I]Repozytorium zawiera wtyczki dające dostęp do polskiej TV, serwisów VOD oraz innych polskich mediów.[/I]</description>
 		<disclaimer>[COLOR lightblue]Autor nie ponosi odpowiedzialności za materiały zamieszczane przez serwisy do których dostęp zapewniają wtyczki. [CR]Wtyczki rozpowszechniane są na zasadach licencji GPL 2 [CR][I](GNU GENERAL PUBLIC LICENSE Version 2, June 1991)[/I][/COLOR]</disclaimer>
 		<platform>all</platform>
 		<email>neopack1@gmail.com</email>

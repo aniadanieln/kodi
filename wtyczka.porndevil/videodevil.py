@@ -10,6 +10,10 @@ import os, traceback
 import cookielib, htmlentitydefs
 
 xbmcplugin.setContent(int(sys.argv[1]), 'movies')
+skin_used = xbmc.getSkinDir()
+xbmcplugin.setContent(int(sys.argv[1]), 'movies')
+xbmc.executebuiltin('Container.SetViewMode(500)') # "Thumbnail" view
+
 
 addon = xbmcaddon.Addon(id='wtyczka.porndevil')
 __language__ = addon.getLocalizedString
