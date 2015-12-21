@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<addon id="wtyczka.polskie.media"
+       name="[COLOR=gold]POLSKIE MEDIA[/COLOR]"
+       version="1.1.2"
+       provider-name="..::noVak::..™">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.polskie.media" version="1.0.0"/>
+    <import addon="script.module.simplejson" version="2.0.10"/>
+    <import addon="script.module.requests" version="2.8.1"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+	<platform>all</platform>
+    <summary>Telewizja, Sport, Filmy, VOD</summary>
+    <description>[COLOR=red]UWAGA: Wtyczka instaluje się bardzo długo![/COLOR] [CR]Plugin pozwala nam ogladac filmy, telewizję i wydarzenia sportowe na żywo. [CR]Dodatkowo wtyczka zapewnia dostęp do bibliotek VOD, radia internetowego i innego rodzaju serwisów multimedialnych... a wszystko to (a przynajmniej większość) dostępna jest za darmo i w [COLOR red]języku polskim[/COLOR].</description>
+  </extension>
+</addon>

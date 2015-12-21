@@ -1,0 +1,22 @@
+###########################
+#                         #
+#      POLSKIE MEDIA      #
+#                         #
+#      (lista zmian)      #
+#                         #
+###########################
+
+—————————————————————————————————————————————
+Wersja                                  1.1.0
+ - dodane serwisy zagraniczne - testowo
+ - zmiana serwerów wtyczki
+ 
+—————————————————————————————————————————————
+Wersja                                  1.0.1
+ - naprawiono błędy instalacji
+ - przepisano ponownie skrypty
+ - dodano testowo serwis FilmOn
+
+—————————————————————————————————————————————
+Wersja                                  1.0.0
+ - wersja początkowa
