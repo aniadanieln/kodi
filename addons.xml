@@ -61,8 +61,10 @@
 </addon>
 
 
-
-	<addon id="wtyczka.telewizja.polska" name="  [COLOR ff8cff66]TELEWIZJA POLSKA[/COLOR]  " version="1.1.2" provider-name="..::noVak::..™">
+	<addon  id="wtyczka.telewizja.polska"
+	version="1.2.0"
+	name="  [COLOR ff8cff66]TELEWIZJA INTERNETOWA[/COLOR]  "
+	provider-name="..::noVak::..™">
 		<requires>
 			<import addon="xbmc.python" version="2.1.0"/>
 		</requires>
@@ -71,7 +73,7 @@
 		</extension>
 		<extension point="xbmc.addon.metadata">
 			<summary> TV | RADIO | FILMY | MUZYKA | VOD </summary>
-			<description>[COLOR lightyellow]Polskie kanały telewizyjne, serwisy VOD oraz inne media popularne w Polsce.[/COLOR] [CR][CR][B][I]   PRZYJEMNEGO KORZYSTANIA !!! [/I][/B]</description>
+			<description>[COLOR aqua]Polskie kanały telewizyjne oraz inne media popularne w Polsce.[/COLOR] [CR][CR][B][I]   PRZYJEMNEGO KORZYSTANIA !!! [/I][/B]</description>
 			<platform>all</platform>
 		</extension>
 	</addon>

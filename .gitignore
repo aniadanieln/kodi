@@ -3,6 +3,9 @@
 ##############################
 
 *.bak
+*.org
+*.tmp
+*.temp
 thumbs.db
 desktop.ini
 *.pyo

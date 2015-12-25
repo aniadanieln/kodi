@@ -5,8 +5,7 @@ import sys,xbmc,xbmcaddon
 import resources.lib.requests as requests
 import re,os,xbmcplugin,xbmcgui
 
-addon_handle = int(sys.argv[1])
-xbmcplugin.setContent(addon_handle, 'movies')
+xbmcplugin.setContent(int(sys.argv[1]), 'movies')
 xbmc.executebuiltin('Container.SetViewMode(500)') # "Thumbnail" view
     
 Addon = xbmcaddon.Addon('wtyczka.telewizja.polska')
@@ -16,6 +15,14 @@ sys.path.append( xbmc.translatePath("special://home/addons/wtyczka.telewizja.pol
 sys.path.append( xbmc.translatePath("special://home/addons/wtyczka.telewizja.polska/obrazy") )
 sys.path.append( xbmc.translatePath("special://home/addons/wtyczka.telewizja.polska/host/strm") )
 sys.path.append( os.path.join( Addon.getAddonInfo('path'), "host" ) )
+
+import resources.lib.ScrapeUtils as ScrapeUtils
+
+wtyczka = xbmcaddon.Addon()
+addonID = wtyczka.getAddonInfo('id')
+addonFolder = downloadScript = xbmc.translatePath('special://home/addons/'+addonID).decode('utf-8')
+addonUserDataFolder = xbmc.translatePath("special://profile/addon_data/"+addonID).decode('utf-8')
+
 
 
 if 'extrafanart' in sys.argv[2]: sys.exit(0)
@@ -31,7 +38,6 @@ iconimage = icon
 eskaicon = xbmc.translatePath( os.path.join( home, 'resources/lib/eska.png' ) )
 eskaricon = xbmc.translatePath( os.path.join( home, 'resources/lib/eskar.png' ) )
 net = xbmc.translatePath( os.path.join( home, 'resources/lib/net.png') )
-telewizjada = xbmc.translatePath('special://home/addons/wtyczka.telewizja.polska/host/strm/')
 update = xbmc.translatePath( os.path.join( home, 'host/update.bat' ) )
 
 fanart = xbmc.translatePath( os.path.join( home, 'fanart.jpg' ) )
@@ -39,11 +45,12 @@ fanart = xbmc.translatePath( os.path.join( home, 'fanart.jpg' ) )
 xbmcPlayer = xbmc.Player()
 playList = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
 mode = sys.argv[2]
-####################### ikony ################
+####################### linki GitHub ################
 dodatki = 'https://raw.githubusercontent.com/neopack1/kodi/master/dodatki/'
 tv = 'https://raw.githubusercontent.com/neopack1/kodi/master/dodatki/logo_tv/'
 radio = 'https://raw.githubusercontent.com/neopack1/kodi/master/dodatki/logo_radio/'
 images = 'https://raw.githubusercontent.com/neopack1/kodi/master/dodatki/images/'
+strm = 'https://raw.githubusercontent.com/neopack1/kodi/master/dodatki/strm/'
 
 defaultvideo = images+'defaultvideo.png'
 play = images+'play.png'
@@ -63,15 +70,15 @@ def main():
     elif 'xcat8' in mode: youtube()
     elif 'xcat9' in mode: telewizjada()
     else:
-        addDir('[COLOR gold][B] Telewizjada [/B][/COLOR][CR](testy)', 'plugin://wtyczka.telewizja.polska/?xcat9x', images+'dir_telewizjada.png')
-        addDir('[B] Telewizja [/B]', 'plugin://wtyczka.telewizja.polska/?xcat4x', images+'dir_tv.png')
-        addDir('[B]FilmBox[/B][CR][COLOR red] Live [/COLOR] ', 'plugin://wtyczka.telewizja.polska/?xcat5x', images+'dir_filmboxlive.png' )
-        addDir('[B]ITIVI[/B][CR]Telewizja Internetowa', 'plugin://wtyczka.telewizja.polska/?xcat7x', images+'dir_itivi.png')
-        addDir(' Looknij TV ', 'plugin://wtyczka.telewizja.polska/?xcat3', images+'dir_looknijtv.png' )
-        addDir(' Eska GO ', 'plugin://wtyczka.telewizja.polska/?xcat2x', images+'dir_eskago.png')
-        addDir('TVP[CR]Stream', 'plugin://wtyczka.telewizja.polska/?xcat1x', images+'dir_tvpstream.png')
-        addDir('Telewizja[CR]Lokalna', 'plugin://wtyczka.telewizja.polska/?xcat6x', images+'dir_tvlokalna.png')
-        addDir('[B][COLOR white]You[/COLOR][COLOR red]Tube[/COLOR][/B][CR]Kanały', 'plugin://wtyczka.telewizja.polska/?xcat8x', images+'dir_youtube.png')
+        addDir('[B][COLOR white]Telewizja[/COLOR][/B][CR][I](strumienie)[/I]', 'plugin://wtyczka.telewizja.polska/?xcat4x', images+'dir_tv.png')
+        addDir('[B][COLOR white]Telewizjada[/COLOR][/B][CR] ', 'plugin://wtyczka.telewizja.polska/?xcat9x', images+'dir_telewizjada.png')
+        addDir('[B][COLOR white]Filmbox[/COLOR][CR] Live [/B]', 'plugin://wtyczka.telewizja.polska/?xcat5x', images+'dir_filmboxlive.png' )
+        addDir('[B]ITIVI[/B][CR] ', 'plugin://wtyczka.telewizja.polska/?xcat7x', images+'dir_itivi.png')
+        addDir('[B][COLOR white]Looknij TV[/COLOR][/B][CR] ', 'plugin://wtyczka.telewizja.polska/?xcat3', images+'dir_looknijtv.png' )
+        addDir('[B]Eska[CR][COLOR FFF20081]GO[/COLOR][/B]', 'plugin://wtyczka.telewizja.polska/?xcat2x', images+'dir_eskago.png')
+        addDir('[B][COLOR white]TVP[/COLOR][CR]Stream[/B]', 'plugin://wtyczka.telewizja.polska/?xcat1x', images+'dir_tvpstream.png')
+        addDir('[B][COLOR white]Telewizja[/COLOR][CR]Lokalna[/B]', 'plugin://wtyczka.telewizja.polska/?xcat6x', images+'dir_tvlokalna.png')
+        addDir('[B][COLOR white]You[/COLOR][COLOR red]Tube[/COLOR][/B][CR](kanały)', 'plugin://wtyczka.telewizja.polska/?xcat8x', images+'dir_youtube.png')
         xbmcplugin.endOfDirectory(int(sys.argv[1]))
         sys.exit(0)
     
@@ -208,23 +215,23 @@ def eska():
 
 def filmboxlive():
 
-    addLink("FilmBox                    ", "http://spi-live.ercdn.net/spi/smil:filmboxbasicsd_pl_0.smil/chunklist_b800000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'filmbox.png') 
-    addLink("FilmBox Premium HD         ", "http://spi-live.ercdn.net/spi/smil:filmboxextrasd_pl_0.smil/chunklist_b800000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'filmbox_premium.png') 
-    addLink("FilmBox Premium HD         ", "http://inea.live.e238-po.insyscd.net/filmboxextra.smil/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'filmbox_premium.png')
-    addLink("FilmBox Extra HD           ", "http://inea.live.e238-po.insyscd.net/filmboxhd.smil/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'filmbox_extra.png') 
-    addLink("FilmBox Extra HD           ", "http://spi-live.ercdn.net/spi/smil:filmboxhd_pl_0.smil/chunklist_b1800000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'filmbox_extra.png') 
-    addLink("FilmBox Action HD          ", "http://inea.live.e238-po.insyscd.net/filmboxaction.smil/chunklist_.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'filmbox_action.png')
-    addLink("FilmBox Family HD          ", "http://inea.live.e238-po.insyscd.net/filmboxfamily.smil/chunklist_b2400000.m3u8", tv+'filmbox_family.png')
-    addLink("FightBox HD                ", "http://spi-live.ercdn.net/spi/smil:fightboxhd_1.smil/chunklist_b1800000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'fightbox.png') 
-    addLink("Kino Polska                ", "http://spi-live.ercdn.net/spi/smil:kinopolskahd_international_0.smil/chunklist_b1200000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'kino_polska.png') 
-    addLink("Kino Polska HD             ", "http://inea.live.e238-po.insyscd.net/kinopolska.smil/chunklist_.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'kino_polska.png') 
-    addLink("Kino Polska Muzyka         ", "http://spi-live.ercdn.net/spi/smil:kinopolskamuzikasd_international_0.smil/chunklist_b800000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'kino_polska_muzyka.png') 
-    addLink("ArtHouse HD                ", "http://spi-live.ercdn.net/spi/smil:fbarthousesd_pl_0.smil/chunklist_b800000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'FilmBox_Arthouse.png') 
-    addLink("DocuBox HD                 ", "http://spi-live.ercdn.net/spi/smil:docuboxhd_0.smil/chunklist_b1600000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'docubox.png') 
-    addLink("FasionBox HD               ", "http://spi-live.ercdn.net/spi/smil:fashionboxhd_0.smil/chunklist_b1600000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'fasionbox.png') 
-    addLink("360TuneBox HD              ", "http://spi-live.ercdn.net/spi/smil:360tuneboxhd_0.smil/chunklist_b1600000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'360_tunebox.png') 
-    addLink("Fast'n'Fun HD              ", "http://spi-live.ercdn.net/spi/smil:fastnfunhd_0.smil/chunklist_b1200000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'fastandfunbox.png') 
-    addLink("Madscreen                  ", "http://spi-live.ercdn.net/spi/smil:madscreen_0.smil/chunklist_b1800000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'madscreen.png') 
+    addLink("FilmBox       ", "http://spi-live.ercdn.net/spi/smil:filmboxbasicsd_pl_0.smil/chunklist_b800000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'filmbox.png') 
+    addLink("FilmBox Premium HD    ", "http://spi-live.ercdn.net/spi/smil:filmboxextrasd_pl_0.smil/chunklist_b800000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'filmbox_premium.png') 
+    addLink("FilmBox Premium HD [COLOR ff000055]stream 2[/COLOR]   ", "http://inea.live.e238-po.insyscd.net/filmboxextra.smil/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'filmbox_premium.png')
+    addLink("FilmBox Extra HD      ", "http://inea.live.e238-po.insyscd.net/filmboxhd.smil/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'filmbox_extra.png') 
+    addLink("FilmBox Extra HD [COLOR ff000055]stream 2[/COLOR]     ", "http://spi-live.ercdn.net/spi/smil:filmboxhd_pl_0.smil/chunklist_b1800000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'filmbox_extra.png') 
+    addLink("FilmBox Action HD    ", "http://inea.live.e238-po.insyscd.net/filmboxaction.smil/chunklist_.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'filmbox_action.png')
+    addLink("FilmBox Family HD      ", "http://inea.live.e238-po.insyscd.net/filmboxfamily.smil/chunklist_b2400000.m3u8", tv+'filmbox_family.png')
+    addLink("FightBox HD         ", "http://spi-live.ercdn.net/spi/smil:fightboxhd_1.smil/chunklist_b1800000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'fightbox.png') 
+    addLink("Kino Polska         ", "http://spi-live.ercdn.net/spi/smil:kinopolskahd_international_0.smil/chunklist_b1200000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'kino_polska.png') 
+    addLink("Kino Polska HD      ", "http://inea.live.e238-po.insyscd.net/kinopolska.smil/chunklist_.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'kino_polska.png') 
+    addLink("Kino Polska Muzyka  ", "http://spi-live.ercdn.net/spi/smil:kinopolskamuzikasd_international_0.smil/chunklist_b800000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'kino_polska_muzyka.png') 
+    addLink("ArtHouse HD       ", "http://spi-live.ercdn.net/spi/smil:fbarthousesd_pl_0.smil/chunklist_b800000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'FilmBox_Arthouse.png') 
+    addLink("DocuBox HD       ", "http://spi-live.ercdn.net/spi/smil:docuboxhd_0.smil/chunklist_b1600000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'docubox.png') 
+    addLink("FasionBox HD     ", "http://spi-live.ercdn.net/spi/smil:fashionboxhd_0.smil/chunklist_b1600000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'fasionbox.png') 
+    addLink("360TuneBox HD    ", "http://spi-live.ercdn.net/spi/smil:360tuneboxhd_0.smil/chunklist_b1600000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'360_tunebox.png') 
+    addLink("Fast'n'Fun HD    ", "http://spi-live.ercdn.net/spi/smil:fastnfunhd_0.smil/chunklist_b1200000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'fastandfunbox.png') 
+    addLink("Madscreen        ", "http://spi-live.ercdn.net/spi/smil:madscreen_0.smil/chunklist_b1800000.m3u8|User-Agent=Mozilla%2f5.0+(iPad%3b+CPU+OS+6_0+like+Mac+OS+X)+AppleWebKit%2f536.26+(KHTML%2c+?like+Gecko)+Version%2f6.0+Mobile%2f10A5355d+Safari%2f8536.25", tv+'madscreen.png') 
 
     xbmcplugin.endOfDirectory(int(sys.argv[1]))
     sys.exit(0)
@@ -277,68 +284,6 @@ def zagraniczne():
     xbmcplugin.endOfDirectory(int(sys.argv[1]))
     sys.exit(0)
 
-########################################################################################################
-def telewizja():
-
-    addLink("4fun TV","rtmp://edge4.popler.tv:1935/publishlive?play=123452/4funtv live=1 swfUrl=http://images.popler.tv/player/flowplayer.commercial.swf pageUrl=http://www.popler.tv/live/4funtv",tv+'4_fun_tv.png')
-#C
-    addLink("Czwórka Polskie Radio", "rtmp://stream85.polskieradio.pl/video/czworka.sdp", radio+'pr4.png')
-#D
-    addLink("Discovery [I]HD[/I]", "http://inea.live.e238-po.insyscd.net/discoverychannelhd.smil/chunklist_b2400000.m3u8", tv+'discovery_channel.png')
-    addLink("Discovery ID [I]HD[/I]", "http://inea.live.e238-po.insyscd.net/id.smil/chunklist_.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'id.png') 
-    addLink("Discovery Life [I]HD[/I]", "http://inea.live.e238-po.insyscd.net/animalplanet.smil/chunklist_.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'discovery_life.png') 
-    addLink("Discovery Science [I]HD[/I]", "http://inea.live.e238-po.insyscd.net/discoveryscience.smil/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'discovery_science.png') 
-    addLink("Discovery Turbo Xtra [I]HD[/I]", "http://inea.live.e238-po.insyscd.net/dtx.smil/chunklist_.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'discovery_turbo_xtra.png') 
-
-#E
-    addLink("Edusat", "rtmp://178.73.10.66:1935/live/mpegts.stream", tv+'edusat.png')
-    addLink("Eurosport [I]HD[/I]", "http://inea.live.e238-po.insyscd.net/eurosport.smil/chunklist_b2400000.m3u8", tv+'eurosport.png')
-    addLink("Eurosport 2 [I]HD[/I]", "http://inea.live.e238-po.insyscd.net/eurosport2hd.smil/chunklist_b2400000.m3u8", tv+'eurosport_2.png')
-
-#F
-    addLink("Fokus", "rtmp://stream.smcloud.net/live/fokustv live=true swfVfy=true pageUrl=", tv+'fokus.png') 
-
-#H
-
-
-#K
-    addLink("Kino Polska [I]HD[/I]", "http://inea.live.e238-po.insyscd.net/kinopolska.smil/chunklist_.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'kino_polska.png') 
-
-#M
-    addLink("Mango24", "rtmp://stream.mango.pl/rtplive playpath=live/1 swfUrl=http://tv.mango.pl/player.swf pageUrl=http://tv.mango.pl/ live=true swfVfy=true live=true", tv+'mango_24.png') 
-
-#N
-#    addLink("National Geographic", "rtmp://144.76.154.14/live playpath=nageo swfUrl= live=1 pageUrl= live=true", icon) 
-    addLink("Nat Geo Wild [I]HD[/I]", "http://inea.live.e238-po.insyscd.net/natgeowildhd.smil/chunklist_.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'neo_geo_wild.png') 
-
-#O
-
-#P
-
-    addLink("Polsat Sport News", "http://n-2-4.dcs.redcdn.pl/hls/o2/ATM-Lab/borys/MotoGP/live.livx/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'polsat_sport_news.png') 
-
-#R
-    addLink("RBL.tv", "rtmp://153.19.248.4:1935/publishlive/rebeltv", tv+'rbl.png') 
-    addLink("Republika", "http://stream4.videostar.pl/999_tvrtest/smil:4321abr.ism/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'republika.png') 
-    addLink("Republika [COLOR ff000055]stream 2[/COLOR]", "http://stream6.videostar.pl/999_tvrtest/smil:4321high.ism/playlist.m3u8?key= live=true", tv+'republika.png') 
-
-#S
-    addLink("Stars.tv", "http://starstv.live.e55-po.insyscd.net/starstvhd.smil/chunklist_.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'stars.png') 
-    addLink("SuperStacja [I]HD[/I]", "http://inea.live.e238-po.insyscd.net/superstacja.smil/chunklist_.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'superstacja.png') 
-
-#T
-    addLink("TLC [I]HD[/I]", "http://inea.live.e238-po.insyscd.net/tlchd.smil/chunklist_b2400000.m3u8", tv+'tlc.png')
-    addLink("Trwam", "http://trwamtv.live.e96-jw.insyscd.net/trwamtv.smil/playlist.m3u8 live=true", tv+'trwam.png') 
-    addLink("TVP Info [I]HD[/I]   ", "http://195.245.213.230/live/warszawa.isml/warszawa.m3u8 live=true", tv+'tvp_info.png')
-    addLink("TVP Seriale", "rtmp://144.76.154.14/live/tvpseriale live=true", tv+'tvp_seriale.png') 
-    addLink("TVP Warszawa [I]HD[/I]", "http://195.245.213.230/live/warszawa2.isml/warszawa2.m3u8 live=true", tv+'tvp_warszawa.png') 
-
-
-    xbmcplugin.endOfDirectory(int(sys.argv[1]))
-    sys.exit(0)
-#########################################################################
-######################################################################
-
 
 
 def itivi():
@@ -368,91 +313,157 @@ def itivi():
     sys.exit(0)
 
 def telewizjada():
-#    xbmc.executebuiltin("Notification([COLOR red]Uruchom UPDATE.EXE[/COLOR],UPDATE.EXE znajdziesz w katalogu 'host' wtyczki, 10000)")
 
-    addLink("13 Ulica",'special://home/addons/wtyczka.telewizja.polska/host/strm/13_ulica.strm', tv+'13_ulica.png')
-    addLink("AleKino+",'special://home/addons/wtyczka.telewizja.polska/host/strm/ale_kino_plus.strm', tv+'ale_kino_plus.png')
-    addLink("AXN",'special://home/addons/wtyczka.telewizja.polska/host/strm/axn.strm', tv+'axn.png')
-    addLink("AXN Black",'special://home/addons/wtyczka.telewizja.polska/host/strm/axn_black.strm', tv+'axn_black.png')
-    addLink("AXN White",'special://home/addons/wtyczka.telewizja.polska/host/strm/axn_white.strm', tv+'axn_white.png')
-    addLink("Canal+",'special://home/addons/wtyczka.telewizja.polska/host/strm/canal_plus.strm', tv+'canal_plus.png')
-    addLink("Canal+ Family",'special://home/addons/wtyczka.telewizja.polska/host/strm/canal_plus_family.strm', tv+'canal_plus_family.png')
-    addLink("Canal+ Film",'special://home/addons/wtyczka.telewizja.polska/host/strm/canal_plus_film.strm', tv+'canal_plus_film.png')
-    addLink("Canal+ Seriale",'special://home/addons/wtyczka.telewizja.polska/host/strm/canal_plus_seriale.strm', tv+'canal_plus_seriale.png')
-    addLink("Canal+ Sport",'special://home/addons/wtyczka.telewizja.polska/host/strm/canal_plus_sport.strm', tv+'canal_plus_sport.png')
-    addLink("Canal+ Sport 2",'special://home/addons/wtyczka.telewizja.polska/host/strm/canal_plus_sport_2.strm', tv+'canal_plus_sport_2.png')
-    addLink("Cinemax",'special://home/addons/wtyczka.telewizja.polska/host/strm/cinemax.strm', tv+'cinemax.png')
-    addLink("Cinemax 2",'special://home/addons/wtyczka.telewizja.polska/host/strm/cinemax_2.strm', tv+'cinemax_2.png')
-    addLink("Discovery",'special://home/addons/wtyczka.telewizja.polska/host/strm/discovery.strm', tv+'discovery_channel.png')
-    addLink("Discovery Historia",'special://home/addons/wtyczka.telewizja.polska/host/strm/discovery_historia.strm', tv+'discovery_historia.png')
-    addLink("Discovery Science",'special://home/addons/wtyczka.telewizja.polska/host/strm/discovery_science.strm', tv+'discovery_science.png')
-    addLink("Eleven",'special://home/addons/wtyczka.telewizja.polska/host/strm/eleven.strm', tv+'eleven.png')
-    addLink("Eleven Sports",'special://home/addons/wtyczka.telewizja.polska/host/strm/eleven_sports.strm', tv+'eleven_sports.png')
-    addLink("Eurosport",'special://home/addons/wtyczka.telewizja.polska/host/strm/eurosport.strm', tv+'eurosport.png')
-    addLink("Eurosport 2",'special://home/addons/wtyczka.telewizja.polska/host/strm/eurosport_2.strm', tv+'eurosport_2.png')
-    addLink("FilmBox",'special://home/addons/wtyczka.telewizja.polska/host/strm/filmbox.strm', tv+'filmbox.png')
-    addLink("FilmBox Action",'special://home/addons/wtyczka.telewizja.polska/host/strm/filmbox_action.strm', tv+'filmbox_action.png')
-    addLink("FOX",'special://home/addons/wtyczka.telewizja.polska/host/strm/fox.strm', tv+'fox.png')
-    addLink("HBO",'special://home/addons/wtyczka.telewizja.polska/host/strm/hbo.strm', tv+'hbo.png')
-    addLink("HBO 2",'special://home/addons/wtyczka.telewizja.polska/host/strm/hbo_2.strm', tv+'hbo_2.png')
-    addLink("HBO Comedy",'special://home/addons/wtyczka.telewizja.polska/host/strm/hbo_comedy.strm', tv+'hbo_comedy.png')
-    addLink("History",'special://home/addons/wtyczka.telewizja.polska/host/strm/history.strm', tv+'history.png')
-    addLink("Kino Polska",'special://home/addons/wtyczka.telewizja.polska/host/strm/kino_polska.strm', tv+'kino_polska.png')
-    addLink("MiniMini+",'special://home/addons/wtyczka.telewizja.polska/host/strm/minimini_plus.strm', tv+'minimini_plus.png')
-    addLink("Nat Geo Wild",'special://home/addons/wtyczka.telewizja.polska/host/strm/nat_geo_wild.strm', tv+'neo_geo_wild.png')
-    addLink("National Geographic",'special://home/addons/wtyczka.telewizja.polska/host/strm/national_geographic.strm', tv+'national_geographic.png')
-    addLink("nSport+",'special://home/addons/wtyczka.telewizja.polska/host/strm/nsport_plus.strm', tv+'nsport_plus.png')
-    addLink("Orange Sport",'special://home/addons/wtyczka.telewizja.polska/host/strm/orange_sport.strm', tv+'orange_sport.png')
-    addLink("Planete+",'special://home/addons/wtyczka.telewizja.polska/host/strm/planete_plus.strm', tv+'planete_plus.png')
-    addLink("Polsat",'special://home/addons/wtyczka.telewizja.polska/host/strm/polsat.strm', tv+'polsat.png')
-    addLink("Polsat 2",'special://home/addons/wtyczka.telewizja.polska/host/strm/polsat_2.strm', tv+'polsat_2.png')
-    addLink("Polsat Cafe",'special://home/addons/wtyczka.telewizja.polska/host/strm/polsat_cafe.strm', tv+'polsat_cafe.png')
-    addLink("Polsat Film",'special://home/addons/wtyczka.telewizja.polska/host/strm/polsat_film.strm', tv+'polsat_film.png')
-    addLink("Polsat News",'special://home/addons/wtyczka.telewizja.polska/host/strm/polsat_news.strm', tv+'polsat_news.png')
-    addLink("Polsat Play",'special://home/addons/wtyczka.telewizja.polska/host/strm/polsat_play.strm', tv+'polsat_play.png')
-    addLink("Polsat Sport",'special://home/addons/wtyczka.telewizja.polska/host/strm/polsat_sport.strm', tv+'polsat_sport.png')
-    addLink("Polsat Sport Extra",'special://home/addons/wtyczka.telewizja.polska/host/strm/polsat_sport_extra.strm', tv+'polsat_sport_extra.png')
-    addLink("Polsat Viasat Expolore",'special://home/addons/wtyczka.telewizja.polska/host/strm/polsat_viasat_expolore.strm', tv+'polsat_viasat_expolore.png')
-    addLink("Polsat Viasat History",'special://home/addons/wtyczka.telewizja.polska/host/strm/polsat_viasat_history.strm', tv+'polsat_viasat_history.png')
-    addLink("Polsat Viasat Nature",'special://home/addons/wtyczka.telewizja.polska/host/strm/polsat_viasat_nature.strm', tv+'polsat_viasat_nature.png')
-    addLink("Puls",'special://home/addons/wtyczka.telewizja.polska/host/strm/puls.strm', tv+'puls.png')
-    addLink("Republika",'special://home/addons/wtyczka.telewizja.polska/host/strm/republika.strm', tv+'republika.png')
-    addLink("SciFi",'special://home/addons/wtyczka.telewizja.polska/host/strm/scifi.strm', tv+'scifi.png')
-    addLink("SuperStacja",'special://home/addons/wtyczka.telewizja.polska/host/strm/superstacja.strm', tv+'superstacja.png')
-    addLink("TNT",'special://home/addons/wtyczka.telewizja.polska/host/strm/tnt.strm', tv+'tnt.png')
-    addLink("TV 4",'special://home/addons/wtyczka.telewizja.polska/host/strm/tv_4.strm', tv+'tv_4.png')
-    addLink("TV 6",'special://home/addons/wtyczka.telewizja.polska/host/strm/tv_6.strm', tv+'tv_6.png')
-    addLink("TVN",'special://home/addons/wtyczka.telewizja.polska/host/strm/tvn.strm', tv+'tvn.png')
-    addLink("TVN 7",'special://home/addons/wtyczka.telewizja.polska/host/strm/tvn_7.strm', tv+'tvn_7.png')
-    addLink("TVN 24",'special://home/addons/wtyczka.telewizja.polska/host/strm/tvn_24.strm', tv+'tvn_24.png')
-    addLink("TVN 24 BIS",'special://home/addons/wtyczka.telewizja.polska/host/strm/tvn_24_bis.strm', tv+'tvn_24_bis.png')
-    addLink("TVN Style",'special://home/addons/wtyczka.telewizja.polska/host/strm/tvn_style.strm', tv+'tvn_style.png')
-    addLink("TVN Turbo",'special://home/addons/wtyczka.telewizja.polska/host/strm/tvn_turbo.strm', tv+'tvn_turbo.png')
-    addLink("TVP1",'special://home/addons/wtyczka.telewizja.polska/host/strm/tvp_1.strm', tv+'tvp_1.png')
-    addLink("TVP2",'special://home/addons/wtyczka.telewizja.polska/host/strm/tvp_2.strm', tv+'tvp_2.png')
-    addLink("TVP abc",'special://home/addons/wtyczka.telewizja.polska/host/strm/tvp_abc.strm', tv+'tvp_abc.png')
-    addLink("TVP Historia",'special://home/addons/wtyczka.telewizja.polska/host/strm/tvp_historia.strm', tv+'tvp_historia.png')
-    addLink("TVP Info",'special://home/addons/wtyczka.telewizja.polska/host/strm/tvp_info.strm', tv+'tvp_info.png')
-    addLink("TVP Polonia",'special://home/addons/wtyczka.telewizja.polska/host/strm/tvp_polonia.strm', tv+'tvp_polonia.png')
-    addLink("TVP Rozrywka",'special://home/addons/wtyczka.telewizja.polska/host/strm/tvp_rozrywka.strm', tv+'tvp_rozrywka.png')
-    addLink("TVP Sport",'special://home/addons/wtyczka.telewizja.polska/host/strm/tvp_sport.strm', tv+'tvp_sport.png')
-    addLink("Universal Channel",'special://home/addons/wtyczka.telewizja.polska/host/strm/universal_channel.strm', tv+'universal_channel.png')
-    addLink("[COLOR red](18+) Hustler TV[/COLOR]",'special://home/addons/wtyczka.telewizja.polska/host/strm/hustler.strm', tv+'hustler.png')
-    addLink("[COLOR red](18+) Private[/COLOR]",'special://home/addons/wtyczka.telewizja.polska/host/strm/private.strm', tv+'private.png')
-    addLink("[COLOR red](18+) RedLight[/COLOR]",'special://home/addons/wtyczka.telewizja.polska/host/strm/redlight.strm', tv+'redlight.png')
+    addLink("13 Ulica",strm+'13_ulica.strm', tv+'13_ulica.png')
+    addLink("AleKino+",strm+'ale_kino_plus.strm', tv+'ale_kino_plus.png')
+    addLink("AXN",strm+'axn.strm', tv+'axn.png')
+    addLink("AXN Black",strm+'axn_black.strm', tv+'axn_black.png')
+    addLink("AXN White",strm+'axn_white.strm', tv+'axn_white.png')
+    addLink("Canal+",strm+'canal_plus.strm', tv+'canal_plus.png')
+    addLink("Canal+ Family",strm+'canal_plus_family.strm', tv+'canal_plus_family.png')
+    addLink("Canal+ Film",strm+'canal_plus_film.strm', tv+'canal_plus_film.png')
+    addLink("Canal+ Seriale",strm+'canal_plus_seriale.strm', tv+'canal_plus_seriale.png')
+    addLink("Canal+ Sport",strm+'canal_plus_sport.strm', tv+'canal_plus_sport.png')
+    addLink("Canal+ Sport 2",strm+'canal_plus_sport_2.strm', tv+'canal_plus_sport_2.png')
+    addLink("Cinemax",strm+'cinemax.strm', tv+'cinemax.png')
+    addLink("Cinemax 2",strm+'cinemax_2.strm', tv+'cinemax_2.png')
+    addLink("Discovery",strm+'discovery.strm', tv+'discovery_channel.png')
+    addLink("Discovery Historia",strm+'discovery_historia.strm', tv+'discovery_historia.png')
+    addLink("Discovery Science",strm+'discovery_science.strm', tv+'discovery_science.png')
+    addLink("Eleven",strm+'eleven.strm', tv+'eleven.png')
+    addLink("Eleven Sports",strm+'eleven_sports.strm', tv+'eleven_sports.png')
+    addLink("Eurosport",strm+'eurosport.strm', tv+'eurosport.png')
+    addLink("Eurosport 2",strm+'eurosport_2.strm', tv+'eurosport_2.png')
+    addLink("FilmBox",strm+'filmbox.strm', tv+'filmbox.png')
+    addLink("FilmBox Action",strm+'filmbox_action.strm', tv+'filmbox_action.png')
+    addLink("FOX",strm+'fox.strm', tv+'fox.png')
+    addLink("HBO",strm+'hbo.strm', tv+'hbo.png')
+    addLink("HBO 2",strm+'hbo_2.strm', tv+'hbo_2.png')
+    addLink("HBO Comedy",strm+'hbo_comedy.strm', tv+'hbo_comedy.png')
+    addLink("History",strm+'history.strm', tv+'history.png')
+    addLink("Kino Polska",strm+'kino_polska.strm', tv+'kino_polska.png')
+    addLink("MiniMini+",strm+'minimini_plus.strm', tv+'minimini_plus.png')
+    addLink("Nat Geo Wild",strm+'nat_geo_wild.strm', tv+'neo_geo_wild.png')
+    addLink("National Geographic",strm+'national_geographic.strm', tv+'national_geographic.png')
+    addLink("nSport+",strm+'nsport_plus.strm', tv+'nsport_plus.png')
+    addLink("Orange Sport",strm+'orange_sport.strm', tv+'orange_sport.png')
+    addLink("Planete+",strm+'planete_plus.strm', tv+'planete_plus.png')
+    addLink("Polsat",strm+'polsat.strm', tv+'polsat.png')
+    addLink("Polsat 2",strm+'polsat_2.strm', tv+'polsat_2.png')
+    addLink("Polsat Cafe",strm+'polsat_cafe.strm', tv+'polsat_cafe.png')
+    addLink("Polsat Film",strm+'polsat_film.strm', tv+'polsat_film.png')
+    addLink("Polsat News",strm+'polsat_news.strm', tv+'polsat_news.png')
+    addLink("Polsat Play",strm+'polsat_play.strm', tv+'polsat_play.png')
+    addLink("Polsat Sport",strm+'polsat_sport.strm', tv+'polsat_sport.png')
+    addLink("Polsat Sport Extra",strm+'polsat_sport_extra.strm', tv+'polsat_sport_extra.png')
+    addLink("Polsat Viasat Expolore",strm+'polsat_viasat_expolore.strm', tv+'polsat_viasat_expolore.png')
+    addLink("Polsat Viasat History",strm+'polsat_viasat_history.strm', tv+'polsat_viasat_history.png')
+    addLink("Polsat Viasat Nature",strm+'polsat_viasat_nature.strm', tv+'polsat_viasat_nature.png')
+    addLink("Puls",strm+'puls.strm', tv+'puls.png')
+    addLink("Republika",strm+'republika.strm', tv+'republika.png')
+    addLink("SciFi",strm+'scifi.strm', tv+'scifi.png')
+    addLink("SuperStacja",strm+'superstacja.strm', tv+'superstacja.png')
+    addLink("TNT",strm+'tnt.strm', tv+'tnt.png')
+    addLink("TV 4",strm+'tv_4.strm', tv+'tv_4.png')
+    addLink("TV 6",strm+'tv_6.strm', tv+'tv_6.png')
+    addLink("TVN",strm+'tvn.strm', tv+'tvn.png')
+    addLink("TVN 7",strm+'tvn_7.strm', tv+'tvn_7.png')
+    addLink("TVN 24",strm+'tvn_24.strm', tv+'tvn_24.png')
+    addLink("TVN 24 BIS",strm+'tvn_24_bis.strm', tv+'tvn_24_bis.png')
+    addLink("TVN Style",strm+'tvn_style.strm', tv+'tvn_style.png')
+    addLink("TVN Turbo",strm+'tvn_turbo.strm', tv+'tvn_turbo.png')
+    addLink("TVP1",strm+'tvp_1.strm', tv+'tvp_1.png')
+    addLink("TVP2",strm+'tvp_2.strm', tv+'tvp_2.png')
+    addLink("TVP abc",strm+'tvp_abc.strm', tv+'tvp_abc.png')
+    addLink("TVP Historia",strm+'tvp_historia.strm', tv+'tvp_historia.png')
+    addLink("TVP Info",strm+'tvp_info.strm', tv+'tvp_info.png')
+    addLink("TVP Polonia",strm+'tvp_polonia.strm', tv+'tvp_polonia.png')
+    addLink("TVP Rozrywka",strm+'tvp_rozrywka.strm', tv+'tvp_rozrywka.png')
+    addLink("TVP Sport",strm+'tvp_sport.strm', tv+'tvp_sport.png')
+    addLink("Universal Channel",strm+'universal_channel.strm', tv+'universal_channel.png')
+    addLink("[COLOR red](18+) Hustler TV[/COLOR]",strm+'xxx_hustler.strm', tv+'hustler.png')
+    addLink("[COLOR red](18+) Private[/COLOR]",strm+'private.strm', tv+'private.png')
+    addLink("[COLOR red](18+) RedLight[/COLOR]",strm+'redlight.strm', tv+'redlight.png')
     
     xbmcplugin.endOfDirectory(int(sys.argv[1]))
     sys.exit(0)
     
 def youtube():
 
+    xbmcplugin.setContent(int(sys.argv[1]), 'movies') # "Movies" content
     xbmc.executebuiltin('Container.SetViewMode(500)') # "Thumbnail" view
-    addDir('Blok Ekipa', 'plugin://plugin.video.youtube/channel/UCxJDH_2HXzwUtT62HgWJqCg/playlist/PLdhsyudOIKSbc-Hx6JWgKgrC8GtVV2Zl-/', images+'blok_ekipa.png')
-    addDir(' iTVP ', 'plugin://plugin.video.youtube/channel/UC03sVDw-tRhwDuQACRFBpGw/playlists/', images+'dir_itvp.png')
     
+    addDir('Sala Kinowa', 'plugin://plugin.video.youtube/channel/UCMy42eSUu30ULX_VmnxiQLA/',"https://yt3.ggpht.com/-JP5trU1TOBM/AAAAAAAAAAI/AAAAAAAAAAA/o4NL4biZvdA/s240-c-k-no-mo/photo.jpg")
+    addDir('Filmowisko', 'plugin://plugin.video.youtube/channel/UCnCqkAxYvZJVy3vxws_pdgg/',"https://yt3.ggpht.com/-x_ZUJcPFwuQ/AAAAAAAAAAI/AAAAAAAAAAA/-eZNE4vsA7k/s240-c-k-no/photo.jpg")
+    addDir('iTVP', 'plugin://plugin.video.youtube/channel/UC03sVDw-tRhwDuQACRFBpGw/playlists/', "https://yt3.ggpht.com/-eNn6tdJFcls/AAAAAAAAAAI/AAAAAAAAAAA/ofAUvQg18O8/s100-c-k-no/photo.jpg")
+    addDir('#TVN24', 'plugin://plugin.video.youtube/channel/UCGUE2aWaTnUdBE6rZwGSBDQ/',"https://i.ytimg.com/i/GUE2aWaTnUdBE6rZwGSBDQ/mq1.jpg")
+    addDir('#TVP Info', 'plugin://plugin.video.youtube/channel/UCTJmdyMfYForzMnaBKDa-bA/',"https://i.ytimg.com/i/TJmdyMfYForzMnaBKDa-bA/mq1.jpg")
+    addDir('TVP Info', 'plugin://plugin.video.youtube/channel/UCzQZbOb86WvhOPoR7jgAfsA/',"https://yt3.ggpht.com/-Ad9rPkJGHoQ/AAAAAAAAAAI/AAAAAAAAAAA/G2atX2fGvkU/s240-c-k-no/photo.jpg")
+    addDir('Blok Ekipa', 'plugin://plugin.video.youtube/channel/UCxJDH_2HXzwUtT62HgWJqCg/playlist/PLdhsyudOIKSbc-Hx6JWgKgrC8GtVV2Zl-/', images+'blok_ekipa.png')
+    addDir('5 Sposobów na...', 'plugin://plugin.video.youtube/channel/UCLcxQ8h1PX3WgLdgnJHcCxg/',"https://yt3.ggpht.com/-IkUvQ9Qeapc/AAAAAAAAAAI/AAAAAAAAAAA/Lo6qpHngY3k/s240-c-k-no/photo.jpg")
+    addDir('AbstrachujeTV', 'plugin://plugin.video.youtube/channel/UCTISYi9ABujrrI1Slg3ZDBA/',"https://yt3.ggpht.com/-CLUN4H-kZwY/AAAAAAAAAAI/AAAAAAAAAAA/Q9vkLR_OYRg/s240-c-k-no/photo.jpg")
+    addDir('AdBuster', 'plugin://plugin.video.youtube/channel/UCXoBDsK4B75au2YTC1aLVpg/',"https://yt3.ggpht.com/-qo2K6-QQqXo/AAAAAAAAAAI/AAAAAAAAAAA/f9BiLg-rr4s/s240-c-k-no/photo.jpg")
+    addDir('SA Wardęga', 'plugin://plugin.video.youtube/channel/UCdZwMpK-iWqCos46xPscDeg/',"https://yt3.ggpht.com/-Oq_0fYkTUwk/AAAAAAAAAAI/AAAAAAAAAAA/x6fdQ9E6j0E/s240-c-k-no/photo.jpg")
+    addDir('Stuu', 'plugin://plugin.video.youtube/channel/UC1w7ZXsQ1d5TIfxisx1regQ/',"https://yt3.ggpht.com/-0K3l-r50PVU/AAAAAAAAAAI/AAAAAAAAAAA/sSCPH_Udij4/s240-c-k-no/photo.jpg")
+    addDir('Szparagi', 'plugin://plugin.video.youtube/channel/UCuzszNzmJ6zk0vWE75BWhgQ/',"https://yt3.ggpht.com/-EtFGwCgP_94/AAAAAAAAAAI/AAAAAAAAAAA/P1s6FzjEIqg/s240-c-k-no/photo.jpg")
+    addDir('ŚmiechawaTV', 'plugin://plugin.video.youtube/channel/UC8oAVQ3BrGphqMZdlDHBqZA/',"https://yt3.ggpht.com/-YvVVawuM-gE/AAAAAAAAAAI/AAAAAAAAAAA/icAkWkGNl5c/s240-c-k-no/photo.jpg")
+    addDir('Break', 'plugin://plugin.video.youtube/channel/UClmmbesFjIzJAp8NQCtt8dQ/',"https://yt3.ggpht.com/-CoKCpORRKLc/AAAAAAAAAAI/AAAAAAAAAAA/ACeetamvfNM/s240-c-k-no/photo.jpg")
+    addDir('FailArmy', 'plugin://plugin.video.youtube/channel/UCPDis9pjXuqyI7RYLJ-TTSA/',"https://yt3.ggpht.com/-_8lHSPO3nNI/AAAAAAAAAAI/AAAAAAAAAAA/-THVRONaQco/s240-c-k-no/photo.jpg")
+    addDir('SFB TV', 'plugin://plugin.video.youtube/channel/UCOOQeCTjRQXvP-5s2U7v5Gg/',"https://yt3.ggpht.com/-sqj5xC5ET90/AAAAAAAAAAI/AAAAAAAAAAA/iINdxQeXyio/s240-c-k-no/photo.jpg")
+    addDir('Kontor TV', 'plugin://plugin.video.youtube/channel/UCb3tJ5NKw7mDxyaQ73mwbRg/',"https://yt3.ggpht.com/-V0unSlauTpk/AAAAAAAAAAI/AAAAAAAAAAA/SjDE3NcQzKM/s240-c-k-no/photo.jpg")
+    addDir('Spinin Records', 'plugin://plugin.video.youtube/channel/UCpDJl2EmP7Oh90Vylx0dZtA/',"https://yt3.ggpht.com/-yZkhExtYPZg/AAAAAAAAAAI/AAAAAAAAAAA/OfongtErwyo/s240-c-k-no/photo.jpg")
+    addDir('Blanco y Negro', 'plugin://plugin.video.youtube/channel/UC_MsAEyTYUBfxp9j1XwMhMw/',"https://yt3.ggpht.com/-mfxGP7j7Q00/AAAAAAAAAAI/AAAAAAAAAAA/_faGqSVwzFo/s240-c-k-no/photo.jpg")
+    addDir('Club Tools', 'plugin://plugin.video.youtube/channel/UCjyiHWU_MCr5eus7_2GnZsA/',"https://yt3.ggpht.com/-xl1PHuZAXJM/AAAAAAAAAAI/AAAAAAAAAAA/DNDHEMUWbKg/s240-c-k-no/photo.jpg")
+
+
+#    addDir('NAZWA', 'ADRES',"OBRAZEK")
+#    addDir('NAZWA', 'ADRES',"OBRAZEK")
+#    addDir('NAZWA', 'ADRES',"OBRAZEK")
+#    addDir('NAZWA', 'ADRES',"OBRAZEK")
+#    addDir('NAZWA', 'ADRES',"OBRAZEK")
+#    addDir('NAZWA', 'ADRES',"OBRAZEK")
+#    addDir('NAZWA', 'ADRES',"OBRAZEK")
+#    addDir('NAZWA', 'ADRES',"OBRAZEK")
 
     xbmcplugin.endOfDirectory(int(sys.argv[1]))
     sys.exit(0)
-    
-    
+
+########################################################################################################
+def telewizja():
+
+    addLink("4fun TV","rtmp://edge4.popler.tv:1935/publishlive?play=123452/4funtv live=1 swfUrl=http://images.popler.tv/player/flowplayer.commercial.swf pageUrl=http://www.popler.tv/live/4funtv",tv+'4_fun_tv.png')
+    addLink("Czwórka Polskie Radio", "rtmp://stream85.polskieradio.pl/video/czworka.sdp", radio+'pr4.png')
+    addLink("Discovery [I]HD[/I]", "http://inea.live.e238-po.insyscd.net/discoverychannelhd.smil/chunklist_b2400000.m3u8", tv+'discovery_channel.png')
+    addLink("Discovery ID [I]HD[/I]", "http://inea.live.e238-po.insyscd.net/id.smil/chunklist_.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'id.png') 
+    addLink("Discovery Life [I]HD[/I]", "http://inea.live.e238-po.insyscd.net/animalplanet.smil/chunklist_.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'discovery_life.png') 
+    addLink("Discovery Science [I]HD[/I]", "http://inea.live.e238-po.insyscd.net/discoveryscience.smil/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'discovery_science.png') 
+    addLink("Discovery Turbo Xtra [I]HD[/I]", "http://inea.live.e238-po.insyscd.net/dtx.smil/chunklist_.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'discovery_turbo_xtra.png') 
+    addLink("Edusat", "rtmp://178.73.10.66:1935/live/mpegts.stream", tv+'edusat.png')
+    addLink("Eurosport [I]HD[/I]", "http://inea.live.e238-po.insyscd.net/eurosport.smil/chunklist_b2400000.m3u8", tv+'eurosport.png')
+    addLink("Eurosport 2 [I]HD[/I]", "http://inea.live.e238-po.insyscd.net/eurosport2hd.smil/chunklist_b2400000.m3u8", tv+'eurosport_2.png')
+    addLink("Fokus", "rtmp://stream.smcloud.net/live/fokustv live=true swfVfy=true pageUrl=", tv+'fokus.png') 
+    addLink("Kino Polska [I]HD[/I]", "http://inea.live.e238-po.insyscd.net/kinopolska.smil/chunklist_.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'kino_polska.png') 
+    addLink("Mango24", "rtmp://stream.mango.pl/rtplive playpath=live/1 swfUrl=http://tv.mango.pl/player.swf pageUrl=http://tv.mango.pl/ live=true swfVfy=true live=true", tv+'mango_24.png') 
+#    addLink("National Geographic", "rtmp://144.76.154.14/live playpath=nageo swfUrl= live=1 pageUrl= live=true", icon) 
+    addLink("Nat Geo Wild [I]HD[/I]", "http://inea.live.e238-po.insyscd.net/natgeowildhd.smil/chunklist_.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'neo_geo_wild.png') 
+    addLink("Polsat Sport News", "http://n-2-4.dcs.redcdn.pl/hls/o2/ATM-Lab/borys/MotoGP/live.livx/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'polsat_sport_news.png') 
+    addLink("RBL.tv", "rtmp://153.19.248.4:1935/publishlive/rebeltv", tv+'rbl.png') 
+    addLink("Republika", "http://stream4.videostar.pl/999_tvrtest/smil:4321abr.ism/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'republika.png') 
+    addLink("Republika [COLOR ff000055]stream 2[/COLOR]", "http://stream6.videostar.pl/999_tvrtest/smil:4321high.ism/playlist.m3u8?key= live=true", tv+'republika.png') 
+    addLink("Stars.tv", "http://starstv.live.e55-po.insyscd.net/starstvhd.smil/chunklist_.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'stars.png') 
+    addLink("SuperStacja [I]HD[/I]", "http://inea.live.e238-po.insyscd.net/superstacja.smil/chunklist_.m3u8|User-Agent=Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", tv+'superstacja.png') 
+    addLink("TLC [I]HD[/I]", "http://inea.live.e238-po.insyscd.net/tlchd.smil/chunklist_b2400000.m3u8", tv+'tlc.png')
+    addLink("Trawel Channel[CR](dzięki amadeus222)", "http://inea.live.e238-po.insyscd.net/travelchannel.smil/chunklist_b2400000.m3u8", tv+'travel_channel.png')
+    addLink("Trwam", "http://trwamtv.live.e96-jw.insyscd.net/trwamtv.smil/playlist.m3u8 live=true", tv+'trwam.png') 
+    addLink("TVP Info [I]HD[/I]   ", "http://195.245.213.230/live/warszawa.isml/warszawa.m3u8 live=true", tv+'tvp_info.png')
+#    addLink("TVP Seriale", "rtmp://144.76.154.14/live/tvpseriale live=true", tv+'tvp_seriale.png') 
+    addLink("TVP Warszawa [I]HD[/I]", "http://195.245.213.230/live/warszawa2.isml/warszawa2.m3u8 live=true", tv+'tvp_warszawa.png') 
+
+
+    xbmcplugin.endOfDirectory(int(sys.argv[1]))
+    sys.exit(0)
+#########################################################################
+######################################################################
+
+
 main()

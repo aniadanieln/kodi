@@ -1,0 +1,14 @@
+<movie>
+	<title>13 ULICA</title>
+	<outline>Kanal z serialami.</outline>
+	<plot>Kanal temaryczny, kt¢ry nadaje gl¢wnie seriale kryminalne.</plot>
+	<tagline></tagline>
+	<runtime></runtime> <!--runtime in minutes -->
+	<thumb>http://media2.pl/g/0/44119.jpg</thumb>
+	<mpaa>Not available</mpaa>
+	<playcount>0</playcount><!-- setting this to > 0 will mark the movie as watched if the "importwatchedstate" flag is set in advancedsettings.xml -->
+	<filenameandpath></filenameandpath>
+	<trailer></trailer>
+	<genre></genre>
+	<credits></credits>
+</movie>
