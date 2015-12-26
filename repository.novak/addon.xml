@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 
-<addon id="repository.novak" name="  [COLOR aqua]REPOZYTORIUM - POLSKIE WTYCZKI[/COLOR] " version="3.0.0" provider-name="..::noVak::..">
-	<extension point="xbmc.addon.repository" name="POLSKIE WTYCZKI Repository">
-		<info compressed="false">https://raw.githubusercontent.com/neopack1/kodi/master/addons.xml</info>
+<addon 	id="repository.novak" 
+		name=" [B][COLOR aqua]« ..::noVak::..™ »[/COLOR][/B]  [COLOR gold]POLSKIE WTYCZKI[/COLOR]"  
+		version="3.0.0" 
+		provider-name="..::noVak::..™">
+	<extension point="xbmc.addon.repository" name="Polskie Wtyczki - Repozytorium">
+		<info compressed="true">https://raw.githubusercontent.com/neopack1/kodi/master/addons.xml</info>
 		<checksum>https://raw.githubusercontent.com/neopack1/kodi/master/addons.xml.md5</checksum>
 		<datadir zip="true">https://raw.githubusercontent.com/neopack1/kodi/master</datadir>
 	</extension>
 	<extension point="xbmc.addon.metadata">
-		<summary>Repozytorium polskich dodatków</summary>
-		<description>[B][COLOR red]!!! ONLY FOR POLISH USERS !!![/COLOR][/B][CR][CR][I]Repozytorium zawiera wtyczki dające dostęp do polskiej TV, serwisów VOD oraz innych polskich mediów.[/I]</description>
-		<license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+		<summary>Polskie wtyczki</summary>
+		<description>[B][COLOR red]!!! ONLY FOR POLISH USERS !!![/COLOR][/B][CR][CR][I]Repozytorium zawiera alternatywne wersje popularnych wtyczek. Dodatkowo repozytorium zawiera wymagane przez te wtyczki biblioteki i skrypty.[/I]</description>
+		<disclaimer>[COLOR lightblue]Autor nie ponosi odpowiedzialności za materiały zamieszczane przez serwisy do których dostęp zapewniają wtyczki. [CR]Wtyczki rozpowszechniane są na zasadach licencji GPL 2 [CR][I](GNU GENERAL PUBLIC LICENSE Version 2, June 1991)[/I][/COLOR]</disclaimer>
 		<platform>all</platform>
-		<email>support@sd-xbmc.org</email>
+		<email>neopack1@gmail.com</email>
 	</extension>
 </addon>
