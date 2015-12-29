@@ -1,0 +1,4 @@
+https://raw.githubusercontent.com/neopack1/KODI-WTYCZKI/master/repository.novak/repository.novak-3.0.0.zip
+
+
+https://raw.githubusercontent.com/neopack1/KODI-WTYCZKI/master/wtyczka.telewizja.polska/wtyczka.telewizja.polska-3.0.1.zip
