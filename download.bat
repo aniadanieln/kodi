@@ -58,9 +58,10 @@ echo.
 
 :CLEAR_TEMP
 pushd "%~dp0"
-TIMEOUT /T 3 /NOBREAK
+TIMEOUT /T 5 /NOBREAK
 
-"C:\Program Files\Git\git-bash.exe" "-q --no-cd script.sh %*"
+
+"C:\Program Files\Git\git-bash.exe" --no-cd "script.sh" %*
 TIMEOUT /T 60 /NOBREAK
 cls
 goto run
