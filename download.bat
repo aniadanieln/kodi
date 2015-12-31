@@ -57,9 +57,10 @@ echo.
 )
 
 :CLEAR_TEMP
-pushd "%~dp0
+pushd "%~dp0"
+TIMEOUT /T 5 /NOBREAK
+"C:\Program Files\Git\git-bash.exe" "--cd=."
 TIMEOUT /T 20 /NOBREAK
-
 cls
 goto run
 
