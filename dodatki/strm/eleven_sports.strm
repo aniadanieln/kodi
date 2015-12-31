@@ -1,1 +1,2 @@
-http://l140.telewizjada.net:1935/tw/2014tvelevensporthd/playlist.m3u8|Cookie=msec%3DSH78KpK7egCnH%252FxhHp08%252BSqbF5qYRoV4KqF9iqRT43UBTegxS3gbtd73tIoUyXMDcIeQ30HL%252BZZrk80qX4UFA4L4kLqitcPAjTPfyjQm%3B+sessid%3D2ppa99ldehvfpnqvdfq8t895p6
+#EXTINF:0 thumb=https://raw.githubusercontent.com/neopack1/kodi/master/dodatki/logo_tv\eleven_sports.png,Eleven Sports 
+http://l140.telewizjada.net:1935/tw/2014tvelevensporthd/chunklist_w1428052867.m3u8

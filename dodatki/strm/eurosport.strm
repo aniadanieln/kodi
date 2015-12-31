@@ -1,1 +1,2 @@
-http://l141.telewizjada.net:1935/tw/2014tveurosport/playlist.m3u8|Cookie=msec%3DC2e0e5mxeQ%252BnRf8wCYIivzqJCNLZEogsYqF9iqRT43UBTegxS3gCosfhqpYW0i4HdILGw0TZ9NRv08w8FI5DFZb4jaaluMPAijU%253D%3B+sessid%3Dqi8023oke2u7gqo0ttnp5l4a86
+#EXTINF:0 thumb=https://raw.githubusercontent.com/neopack1/kodi/master/dodatki/logo_tv\eurosport.png,Eurosport 1 
+http://l138.telewizjada.net:1935/tw/2014tveurosport/chunklist_w1593469295.m3u8

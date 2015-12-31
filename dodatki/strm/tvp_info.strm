@@ -1,1 +1,2 @@
-http://l136.telewizjada.net:1935/tw/2014tvtvpinfo/playlist.m3u8|Cookie=msec%3DSny8f5zgJVGzQv5gWJx0%252FjrMAsuJE8kpO6R9iqRT43UBTegxS2kBoMH8vJZL1m0WYY%252FW3FmE7cl32J88AZhCA4rylqG%252Bv9%252FB%3B+sessid%3D0r047b35q5tg6o9qt1diemuda3
+#EXTINF:0 thumb=https://raw.githubusercontent.com/neopack1/kodi/master/dodatki/logo_tv\tvp_info.png,TVP Info 
+http://l137.telewizjada.net:1935/tw/2014tvtvpinfo/chunklist_w2137536471.m3u8

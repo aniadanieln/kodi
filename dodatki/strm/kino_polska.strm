@@ -1,1 +1,2 @@
-http://l137.telewizjada.net:1935/tw/2014tvkinopolska/playlist.m3u8|Cookie=msec%3DQn78csbme1O2Br1vVso97nmeCMjdFoh%252FYqN9iqRT43UBTegxS3YevsfitZUXzWBYaI%252Fe1kHD844sjYpxCpBICIrym7qiuNjcijTC%3B+sessid%3D8pp9mdm7tq7h89pa7cnj1h4284
+#EXTINF:0 thumb=https://raw.githubusercontent.com/neopack1/kodi/master/dodatki/logo_tv\kino_polska.png,Kino Polska 
+http://l141.telewizjada.net:1935/tw/2014tvkinopolska/chunklist_w358476013.m3u8

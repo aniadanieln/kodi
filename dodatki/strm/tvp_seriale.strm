@@ -1,1 +1,2 @@
-http://l139.telewizjada.net:1935/tw/2014tvtvpseriale/playlist.m3u8|Cookie=msec%3DCz%252F6fZ%252FqeAukBvplC8Ii4CqIFJOfTtd8M6J9iqRT43UBTegxS2kBoNv3qJAFymRYaI%252Fe1kHD844sjYpxCpBICIrym7qiuNjcijTC%3B+sessid%3Dq1v64hnofqpbe1oodur1s0k1i5
+#EXTINF:0 thumb=https://raw.githubusercontent.com/neopack1/kodi/master/dodatki/logo_tv\tvp_seriale.png,TVP Seriale 
+http://l138.telewizjada.net:1935/tw/2014tvtvpseriale/chunklist_w1855028160.m3u8

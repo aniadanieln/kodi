@@ -1,1 +1,2 @@
-http://l136.telewizjada.net:1935/tw/2014tvtvppolonia/playlist.m3u8|Cookie=msec%3DCmLmeJzyYlWjQP5rVps86juQU8SdTdgnaKZ9iqRT43UBTegxS2kBoNj9tpYKz2BYaI%252Fe1kHD844sjYpxCpBICIrym7qiuNjcijTC%3B+sessid%3Dplj37pt1a7tl8hqeum5fq3dj21
+#EXTINF:0 thumb=https://raw.githubusercontent.com/neopack1/kodi/master/dodatki/logo_tv\tvp_polonia.png,TVP Polonia 
+http://l138.telewizjada.net:1935/tw/2014tvtvppolonia/chunklist_w479975254.m3u8

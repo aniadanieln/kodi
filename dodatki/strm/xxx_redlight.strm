@@ -1,1 +1,2 @@
-http://l140.telewizjada.net:1935/tw/2014tvredlighthd/playlist.m3u8|Cookie=msec%3DGT%252F5O8%252B0IVykBrk0D5Uv63mPXpGNCt4%252BK6N9iqRT43UBTegxS28StMT7vZEQzmVYaI%252Fe1kHD844sjYpxCpBICIrym7qiuNjcijTC%3B+sessid%3Dc1upd678fq33afbd7r83atbsq4
+#EXTINF:0 thumb=https://raw.githubusercontent.com/neopack1/kodi/master/dodatki/logo_tv\xxx_redlight.png,XXX RedLight 
+http://l140.telewizjada.net:1935/tw/2014tvredlighthd/chunklist_w329812390.m3u8

@@ -1,1 +1,2 @@
-http://l137.telewizjada.net:1935/tw/2014tvpolsatfilm/playlist.m3u8|Cookie=msec%3DGGbjJcbqIAujEbt0WcYo6SzKAtHbT4k5Mqd9iqRT43UBTegxS20YvNvzrp8NymxYaI%252Fe1kHD844sjYpxCpBICIrym7qiuNjcijTC%3B+sessid%3Dbhonmh6oaf1s75efb7ds715th0
+#EXTINF:0 thumb=https://raw.githubusercontent.com/neopack1/kodi/master/dodatki/logo_tv\polsat_film.png,Polsat Film 
+http://l141.telewizjada.net:1935/tw/2014tvpolsatfilm/chunklist_w364005645.m3u8

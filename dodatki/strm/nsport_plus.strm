@@ -1,1 +1,2 @@
-http://l141.telewizjada.net:1935/tw/2014tvnsport/playlist.m3u8|Cookie=msec%3DGWz9Ld3xJVX7B703X8AvuyGMF9ScSdcsKaF9iqRT43UBTegxS3MEoMfgrtYUymAOdIrM2wPHs486xoE3HIRIFZb1lrqiv94%253D%3B+sessid%3Dcbqfvs319p7013b4oqqvp7kas6
+#EXTINF:0 thumb=https://raw.githubusercontent.com/neopack1/kodi/master/dodatki/logo_tv\nsport_plus.png,nSport+ 
+http://l138.telewizjada.net:1935/tw/2014tvnsport/chunklist_w400802443.m3u8

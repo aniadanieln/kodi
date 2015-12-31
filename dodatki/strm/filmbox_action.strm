@@ -1,1 +1,2 @@
-http://l139.telewizjada.net:1935/tw/2014tvfilmboxaction/playlist.m3u8|Cookie=msec%3DEm%252F9cs3sfxSxH%252BwxAcV0vj6aVsCCEMwjMqF9iqRT43UBTegxS3sevMXwtYEFxXUed42Q30HL%252BZZrk80qX4UFA4L4kLqitcPAjTPfyjQm%3B+sessid%3Dhaq9fnipshf6o691pg0bnnpnh6
+#EXTINF:0 thumb=https://raw.githubusercontent.com/neopack1/kodi/master/dodatki/logo_tv\filmbox_action.png,FilmBox Action 
+http://l138.telewizjada.net:1935/tw/2014tvfilmboxaction/chunklist_w1832218048.m3u8

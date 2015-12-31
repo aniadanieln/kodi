@@ -1,1 +1,2 @@
-http://l136.telewizjada.net:1935/tw/2014tvtv4/playlist.m3u8|Cookie=msec%3DE3r%252BJ5PlJQqqAedhW8c8%252Bj6XDsmBDdl8NaF9iqRT43UBTegxS2kB5IfitpgdymgEbM3SnFiSpsIxzos8HIRFDorykac%253D%3B+sessid%3Ditrl8g3nhvmf54qupjhkmse1o6
+#EXTINF:0 thumb=https://raw.githubusercontent.com/neopack1/kodi/master/dodatki/logo_tv\tv_4.png,TV 4 
+http://l140.telewizjada.net:1935/tw/2014tvtv4/chunklist_w165006148.m3u8

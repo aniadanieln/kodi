@@ -1,1 +1,2 @@
-http://l138.telewizjada.net:1935/tw/2014tvdiscoveryscience/playlist.m3u8|Cookie=msec%3DFT%252B%252BLcbxZQ6zAf5gH5877CrNB86NSdUrKaV9iqRT43UBTegxS3keo8v9rJwW33IUcYbRzEiF8JZjmdVtQcJeVpe1m7KovsPAgCjDzTM70x7S%3B+sessid%3Do12fmssjqvtgqlvcd0ala7ifs2
+#EXTINF:0 thumb=https://raw.githubusercontent.com/neopack1/kodi/master/dodatki/logo_tv\discovery_science.png,Discovery Science 
+http://l140.telewizjada.net:1935/tw/2014tvdiscoveryscience/chunklist_w2128938349.m3u8

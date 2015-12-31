@@ -1,1 +1,2 @@
-http://l140.telewizjada.net:1935/tw/2014tvtvn24/playlist.m3u8|Cookie=msec%3DGGjqOJvsZQH3HLw3B4c7tiOMEJqJRox7baV9iqRT43UBTegxS2kBvpqm9YkIx3gbcZDLgUCZ9cIk2IoqAI5eCZH1jaaivg%253D%253D%3B+sessid%3Dbffs0nse5k60itv9mqv8e80672
+#EXTINF:0 thumb=https://raw.githubusercontent.com/neopack1/kodi/master/dodatki/logo_tv\tvn_24.png,TVN 24 
+http://l137.telewizjada.net:1935/tw/2014tvtvn24/chunklist_w256590659.m3u8

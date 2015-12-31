@@ -1,1 +1,2 @@
-http://l138.telewizjada.net:1935/tw/2014tvalekinoplus/playlist.m3u8|Cookie=msec%3DSGW7LZjpJAHyGvgxB5wj4H2ZA8bcGdIsMKd9iqRT43UBTegxS3wbtcP7tJYUynQEN5PTzlTG6Yl2ztQ3R45WA5fukay%252Bv9jHljTDyw%253D%253D%3B+sessid%3D2k7f3k2e0mr6iono3ded0gnaj0
+#EXTINF:0 thumb=https://raw.githubusercontent.com/neopack1/kodi/master/dodatki/logo_tv\ale_kino_plus.png,AleKino+ 
+http://l141.telewizjada.net:1935/tw/2014tvalekinoplus/chunklist_w740036863.m3u8
