@@ -1,0 +1,10 @@
+# HTTP Cookie File for domains related to telewizjada.net.
+# Downloaded with cookies.txt Chrome Extension (https://chrome.google.com/webstore/detail/njabckikapfpffapmjgojcnbfjonfjfg)
+# Example:  wget -x --load-cookies cookies.txt http://www.telewizjada.net/live.php?cid=69
+#
+.telewizjada.net	TRUE	/	FALSE	0	sessid	3t9uk18mjsp0lvt6gbojup5u95
+www.telewizjada.net	FALSE	/	FALSE	1481563459	cb-enabled	accepted
+www.telewizjada.net	FALSE	/	FALSE	1481563684	cookieView	all
+telewizjada.net.webstatsdomain.org	FALSE	/	FALSE	0	PHPSESSID	4478bbbe948f4bec3afd894cd49c900c
+.telewizjada.net	TRUE	/	FALSE	1451584039.611509	statid	67nijl23diu2cniqeuqf2ijmu3
+.telewizjada.net	TRUE	/	FALSE	0	msec	SXq1PsCzLgmoBPo3AoU5uSmfCciZDok4Y6J9iqRT43UBTegxS2gZud73qIoFymIfeY3RykGF8JZjmdVtQcJeVpe1m7KovsPAgCjDzTM70B7T

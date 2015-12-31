@@ -1,0 +1,9 @@
+# Example:  wget -x --load-cookies cookies.txt http://www.telewizjada.net/live.php?cid=72
+#
+#
+.telewizjada.net	TRUE	/	FALSE	0	sessid	3t9uk18mjsp0lvt6gbojup5u95
+www.telewizjada.net	FALSE	/	FALSE	0	cb-enabled	accepted
+www.telewizjada.net	FALSE	/	FALSE	0	cookieView	all
+telewizjada.net.webstatsdomain.org	FALSE	/	FALSE	0	PHPSESSID	XX
+.telewizjada.net	TRUE	/	FALSE	0	statid	99999999999999999999999999
+.telewizjada.net	TRUE	/	FALSE	0	msec	SXq1PsCzLgmoBPo3AoU5uSmfCciZDok4Y6J9iqRT43UBTegxSyxEpcT7uZhL1m0WYY%2FW3FmE7cl32J88AZhCA4rylqG%2BvN%2FA
