@@ -15,7 +15,7 @@ Puls,http://l141.telewizjada.net:1935/tw/2014tvtvpuls,puls
 AleKino+,http://l141.telewizjada.net:1935/tw/2014tvalekinoplus,ale_kino_plus
 AXN,http://l141.telewizjada.net:1935/tw/2014tvaxn,axn
 AXN White,http://l141.telewizjada.net:1935/tw/2014tvaxnwhite,axn_white
-AXN Black,http://l137.telewizjada.net:1935/tw/2014tvaxnblack,axn_black
+AXN Black,http://l139.telewizjada.net:1935/tw/2014tvaxnblack,axn_black
 Canal+,http://l137.telewizjada.net:1935/tw/2014tvcanalplushd,canal_plus
 Canal+ Film,http://l140.telewizjada.net:1935/tw/2014tvcanalplusfilmhd,canal_plus_film
 Canal+ Seriale,http://l139.telewizjada.net:1935/tw/2014tvcanalplusserialehd,canal_plus_seriale
@@ -35,7 +35,7 @@ SciFi,http://l141.telewizjada.net:1935/tw/2014tvscifi,scifi
 TNT,http://l141.telewizjada.net:1935/tw/2014tvtnt,tnt
 Universal Channel,http://l141.telewizjada.net:1935/tw/2014tvuniversalchannel,universal_channel
 Canal+ Sport,http://l140.telewizjada.net:1935/tw/2014tvcanalplussporthd,canal_plus_sport
-Canal+ Sport 2,http://l140.telewizjada.net:1935/tw/2014tvcanalplussport2hd,canal_plus_sport_2
+Canal+ Sport 2,http://l139.telewizjada.net:1935/tw/2014tvcanalplussport2hd,canal_plus_sport_2
 Eleven,http://l140.telewizjada.net:1935/tw/2014tvelevenhd,eleven
 Eleven Sports,http://l140.telewizjada.net:1935/tw/2014tvelevensporthd,eleven_sports
 Eurosport 1,http://l138.telewizjada.net:1935/tw/2014tveurosport,eurosport
