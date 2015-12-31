@@ -49,8 +49,8 @@ set pls="%%B/playlist.m3u8"
 echo %%A
 if exist %strm_dir%\%%C.strm del /F /Q %strm_dir%\%%C.strm
 wget_lite.exe -nv --append-output=log.txt --show-progress --waitretry=2 --user-agent=%agent% --load-cookies=%cookie% %pls%
-echo #EXTINF:0 thumb=%logo_tv%\%%C.png,%%A >%strm_dir%\%%C.strm
-set /p="%%B/"<nul >>%strm_dir%\%%C.strm
+::echo #EXTINF:0 thumb=%logo_tv%\%%C.png,%%A >%strm_dir%\%%C.strm
+set /p="%%B/"<nul >%strm_dir%\%%C.strm
 FIND /i "chunklist" < playlist.m3u8 >>%strm_dir%\%%C.strm
 del /F /Q *m3u8*
 echo.
